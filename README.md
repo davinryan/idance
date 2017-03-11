@@ -10,3 +10,18 @@ https://developers.google.com/analytics/devguides/reporting/core/v4/rest/
 
 ### Creating a Report
 https://developers.google.com/analytics/devguides/reporting/core/v4/basics
+
+## Fetch dependencies
+```
+npm install
+```
+
+## Run Webpack
+```
+npm run build
+```
+
+## Start http-server
+```
+npm start
+```
