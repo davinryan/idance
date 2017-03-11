@@ -28,7 +28,7 @@ module.exports = {
     filename: 'app/bundle.js'
   },
   plugins: [
-    new HtmlWebpackPlugin({template: './src/client/index.html'})
+    new HtmlWebpackPlugin({template: './src/client/index.ejs'})
   ],
   resolve: {
     extensions: ['.ts']
