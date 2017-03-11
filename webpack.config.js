@@ -1,14 +1,14 @@
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   devServer: {
-    outputPath: path.join(__dirname, 'dist'),
-    colors: false
+    contentBase: path.resolve(__dirname, 'dist/public')
   },
   devtool: "source-map",
   entry: {
-    app: ['./client/app/app.ts']
+    app: ['./src/client/app/app.ts']
   },
   module: {
     rules: [
@@ -28,12 +28,8 @@ module.exports = {
     filename: 'app/bundle.js'
   },
   plugins: [
-    new CopyWebpackPlugin([
-        {
-          from: 'client/index.html'
-        }
-        ]
-    )],
+    new HtmlWebpackPlugin({template: './src/client/index.html'})
+  ],
   resolve: {
     extensions: ['.ts']
   }
