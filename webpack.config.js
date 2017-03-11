@@ -8,7 +8,7 @@ module.exports = {
   },
   devtool: "source-map",
   entry: {
-    app: ['./src/client/app.ts']
+    app: ['./client/app/app.ts']
   },
   module: {
     rules: [
@@ -21,15 +21,20 @@ module.exports = {
         test: /\.ts$/,
         loader: 'tslint-loader'
       }
-    ],
+    ]
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, 'dist/public'),
+    filename: 'app/bundle.js'
   },
   plugins: [
-    new CopyWebpackPlugin([{ from: 'src/client/public' }])],
+    new CopyWebpackPlugin([
+        {
+          from: 'client/index.html'
+        }
+        ]
+    )],
   resolve: {
     extensions: ['.ts']
   }
-}
+};
