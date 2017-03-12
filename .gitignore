@@ -4,3 +4,5 @@ dist
 .idea
 src/**/*.js
 src/**/*.map
+*.iml
+npm-debug.log
