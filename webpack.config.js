@@ -30,6 +30,7 @@ const clientConfig = extend(true, {}, config, {
   devServer: {
     historyApiFallback: true,
     contentBase: path.resolve(__dirname, 'dist/public'),
+    publicPath: 'reports',
     host: '127.0.0.1',
     port: 8080,
     proxy: {
