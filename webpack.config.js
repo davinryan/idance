@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const extend = require('extend');
 var webpack = require('webpack');
@@ -20,17 +21,26 @@ const config = {
     ]
   },
   resolve: {
-    extensions: ['.ts']
+    extensions: ['.ts', '.js']
   }
 };
 
 const clientConfig = extend(true, {}, config, {
   target: 'web',
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist/public')
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, 'dist/public'),
+    host: '127.0.0.1',
+    port: 8080,
+    proxy: {
+      '/api/v1/': {
+        target: 'http://localhost:3000',
+        secure: false
+      }
+    }
   },
   entry: {
-    app: ['./src/client/app/app.ts']
+    app: ['./src/client/app/index.ts']
   },
   output: {
     path: path.resolve(__dirname, 'dist/public'),
@@ -52,6 +62,15 @@ fs.readdirSync('node_modules')
 
 const serverConfig = extend(true, {}, config, {
   target: 'node',
+  node: {
+    console: false,
+    global: true,
+    process: true,
+    Buffer: true,
+    __filename: false,
+    __dirname: false,
+    setImmediate: true
+  },
   entry: {
     app: ['./src/server/index.ts']
   },
@@ -59,7 +78,15 @@ const serverConfig = extend(true, {}, config, {
     path: path.resolve(__dirname, 'dist/server'),
     filename: 'index.js'
   },
-  externals: nodeModules
+  externals: nodeModules,
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: 'src/server/package.json',
+        to: '../'
+      }
+    ])
+  ]
 });
 
 module.exports = [clientConfig, serverConfig];
