@@ -27,19 +27,6 @@ const config = {
 
 const clientConfig = extend(true, {}, config, {
   target: 'web',
-  devServer: {
-    historyApiFallback: true,
-    contentBase: path.resolve(__dirname, 'dist/public'),
-    publicPath: 'reports',
-    host: '127.0.0.1',
-    port: 8080,
-    proxy: {
-      '/api/v1/': {
-        target: 'http://localhost:3000',
-        secure: false
-      }
-    }
-  },
   entry: {
     app: ['./src/client/app/index.ts']
   },
