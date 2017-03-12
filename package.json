@@ -9,6 +9,10 @@
     "test": "karma start",
     "test-watch": "karma start --no-single-run --auto-watch"
   },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/idance-analytics.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/jasmine": "^2.5.38",
@@ -26,5 +30,9 @@
     "tslint": "^4.0.2",
     "tslint-loader": "^3.3.0",
     "typescript": "^2.1.4"
+  },
+  "dependencies": {
+    "@types/express": "^4.0.35",
+    "express": "^4.15.2"
   }
 }
