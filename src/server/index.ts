@@ -9,8 +9,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-logger.info(config.staticContentPath);
-
 app.use('/reports', express.static(config.staticContentPath));
 
 app.listen(config.port, () => {
