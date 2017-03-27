@@ -1,16 +1,7 @@
 import * as express from 'express';
-import config from './config';
-import {getLogger} from './logger';
+import routes from './routes';
+import expressConfig from './express.config';
 
-const logger = getLogger('express');
 const app = express();
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-app.use('/reports', express.static(config.staticContentPath));
-
-app.listen(config.port, () => {
-  logger.info('Example app listening on port 3000!');
-});
+expressConfig(app);
+routes(app);
