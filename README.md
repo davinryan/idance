@@ -1,5 +1,14 @@
-# idance-analytics
+# idance
 Basic website to show analytics reports of the idance website
+
+# Build and Run
+```
+npm run build
+npm run start-dev (for development)
+npm run start (for production - requires a build and needs to be run from dist folder)
+```
+
+Client and server both run on http://localhost:3000/reports 
 
 ## Useful Google analytics references
 ### Demension and metrics types
