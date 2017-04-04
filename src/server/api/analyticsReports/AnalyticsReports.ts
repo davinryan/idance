@@ -16,33 +16,39 @@ class AnalyticsReports {
    * Return report on number of hits from different sources.
    * @returns {Promise<T>}
    */
-  public getNoEntrancesPerSiteSourceForLast30Days(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      const request: object = {
-        reportRequests: [
-          {
-            viewId: config.get('GOOGLE_ANALYTICS_VIEW_ID'),
-            dateRanges: [
-              {
-                startDate: '30daysAgo',
-                endDate: 'today'
-              }
-            ],
-            metrics: [
-              {
-                expression: 'ga:entrances'
-              }
-            ],
-            orderBys: [
-              {fieldName: 'ga:entrances', sortOrder: 'DESCENDING'}
-            ],
-            dimensions: [
-              {name: 'ga:sourceMedium'}
-            ]
-          }
-        ]
-      };
+  public getNoEntrancesPerSiteSourceForLast30Days(): object {
+    const request: object = {
+      reportRequests: [
+        {
+          viewId: config.get('GOOGLE_ANALYTICS_VIEW_ID'),
+          dateRanges: [
+            {
+              startDate: '30daysAgo',
+              endDate: 'today'
+            }
+          ],
+          metrics: [
+            {
+              expression: 'ga:entrances'
+            }
+          ],
+          orderBys: [
+            {fieldName: 'ga:entrances', sortOrder: 'DESCENDING'}
+          ],
+          dimensions: [
+            {name: 'ga:sourceMedium'}
+          ]
+        }
+      ]
+    };
 
+    return this.batchGet(request).then((reports) => {
+      return reports[0];
+    });
+  }
+
+  private batchGet(request): Promise<any> {
+    return new Promise((resolve, reject) => {
       const jwtClient = new google.auth.JWT(config.get('GOOGLE_ANALYTICS_CLIENT_EMAIL'), null, config.get('GOOGLE_ANALYTICS_PRIVATE_KEY'), [this.SCOPES], null);
       jwtClient.authorize((authError) => {
         if (authError) {
@@ -59,7 +65,7 @@ class AnalyticsReports {
             logger.error(batchError);
             reject(batchError);
           }
-          resolve(resp.reports[0]);
+          resolve(resp.reports);
         });
       });
     });
