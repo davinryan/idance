@@ -28,7 +28,7 @@
   function queryReports() {
     gapi.client.request({
       path: '/v4/reports:batchGet',
-      root: 'https://analyticsreporting.googleapis.com/',
+      root: 'https://analytics.googleapis.com/',
       method: 'POST',
       body: {
         reportRequests: [

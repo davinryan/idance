@@ -1,0 +1,209 @@
+{
+  "columnHeader": {
+    "dimensions": [
+      "ga:sourceMedium"
+    ],
+    "metricHeader": {
+      "metricHeaderEntries": [
+        {
+          "name": "ga:entrances",
+          "type": "INTEGER"
+        }
+      ]
+    }
+  },
+  "data": {
+    "rows": [
+      {
+        "dimensions": [
+          "google / organic"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "132"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "cerocwellington.com / referral"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "95"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "(direct) / (none)"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "75"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "cerocdance.com / referral"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "18"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "m.facebook.com / referral"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "9"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "facebook.com / referral"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "3"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "e-commerce-seo1.com / referral"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "2"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "ecommerce-seo.org / referral"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "2"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "l.messenger.com / referral"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "2"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "alldance.co.nz / referral"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "1"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "e-commerce-seo.com / referral"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "1"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "nz.search.yahoo.com / referral"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "1"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "outlook.live.com / referral"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "1"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensions": [
+          "webmail.vodafone.co.nz / referral"
+        ],
+        "metrics": [
+          {
+            "values": [
+              "1"
+            ]
+          }
+        ]
+      }
+    ],
+    "totals": [
+      {
+        "values": [
+          "343"
+        ]
+      }
+    ],
+    "rowCount": 14,
+    "minimums": [
+      {
+        "values": [
+          "1"
+        ]
+      }
+    ],
+    "maximums": [
+      {
+        "values": [
+          "132"
+        ]
+      }
+    ]
+  }
+}

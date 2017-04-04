@@ -1,9 +1,11 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "noImplicitAny": false,
-        "noEmitHelpers": true,
-        "sourceMap": true
-    }
+  "compilerOptions": {
+    "types": ["node"],
+    "module": "commonjs",
+    "target": "es6",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": true
+  }
 }

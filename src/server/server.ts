@@ -1,14 +1,29 @@
+import AnalyticsReports from './api/analyticsReports';
 import config from './config';
 import * as express from 'express';
 import {getLogger} from './logger';
 const logger = getLogger('Server');
 
+/**
+ * Main Server to Run the back and front end.
+ */
 class Server {
 
+  /** Main express application. */
   private app: express.Application;
 
+  /** Google Analytics Reports API. */
+  private reports: AnalyticsReports;
+
+  /**
+   * Default Constructor
+   */
   constructor() {
+    // Create an express application
     this.app = express();
+
+    // Instantiate Reports API
+    this.reports = new AnalyticsReports();
 
     // Configure the application
     this.config();
@@ -17,6 +32,9 @@ class Server {
     this.routes();
   }
 
+  /**
+   * Any express configuration.
+   */
   private config() {
     logger.info('Configuring Server');
 
@@ -25,6 +43,9 @@ class Server {
     });
   }
 
+  /**
+   * Any express routing configuration.
+   */
   private routes() {
     logger.info('Configuring Server Routes');
 
@@ -33,6 +54,12 @@ class Server {
 
     // Analytics Page
     router.use('/reports', express.static(config.staticContentPath));
+
+    // Analytics API
+    router.get('/v1/reports', async(req, res) => {
+      let report = await this.reports.getNoEntrancesPerSiteSourceForLast30Days();
+      res.json(report)
+    });
 
     // use router middleware
     this.app.use(router);
