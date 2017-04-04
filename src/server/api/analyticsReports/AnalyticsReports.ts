@@ -3,15 +3,14 @@
 // https://console.developers.google.com/apis/api/analyticsreporting.googleapis.com/overview
 import {getLogger} from '../../logger';
 import * as google from 'googleapis';
+import config from '../../config';
 
-const KEY = require('./key.json');
 const analytics = google.analyticsreporting('v4');
 const logger = getLogger('AnalyticsReports');
 
 class AnalyticsReports {
 
   private SCOPES: string = 'https://www.googleapis.com/auth/analytics.readonly';
-  private VIEW_ID: string = '141337572';
 
   /**
    * Return report on number of hits from different sources.
@@ -22,7 +21,7 @@ class AnalyticsReports {
       const request: object = {
         reportRequests: [
           {
-            viewId: this.VIEW_ID,
+            viewId: config.get('GOOGLE_ANALYTICS_VIEW_ID'),
             dateRanges: [
               {
                 startDate: '30daysAgo',
@@ -44,8 +43,8 @@ class AnalyticsReports {
         ]
       };
 
-      const jwtClient = new google.auth.JWT(KEY.client_email, null, KEY.private_key, [this.SCOPES], null);
-      jwtClient.authorize((authError, tokens) => {
+      const jwtClient = new google.auth.JWT(config.get('GOOGLE_ANALYTICS_CLIENT_EMAIL'), null, config.get('GOOGLE_ANALYTICS_PRIVATE_KEY'), [this.SCOPES], null);
+      jwtClient.authorize((authError) => {
         if (authError) {
           logger.error(authError.stack);
           return;
@@ -55,8 +54,7 @@ class AnalyticsReports {
           resource: request,
           auth: jwtClient
         }, (batchError, resp) => {
-          logger.info('getNoEntrancesPerSiteSourceForLast30Days');
-          logger.info(JSON.stringify(resp.reports[0]));
+          logger.info('getNoEntrancesPerSiteSourceForLast30Days: %s', JSON.stringify(resp.reports[0]));
           if (batchError) {
             logger.error(batchError);
             reject(batchError);

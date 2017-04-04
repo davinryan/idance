@@ -38,8 +38,8 @@ class Server {
   private config() {
     logger.info('Configuring Server');
 
-    this.app.listen(config.port, () => {
-      logger.info('Application now listening on port %s ', config.port);
+    this.app.listen(config.get('PORT'), () => {
+      logger.info('Application now listening on port %s ', config.get('PORT'));
     });
   }
 
@@ -53,7 +53,7 @@ class Server {
     router = express.Router();
 
     // Analytics Page
-    router.use('/reports', express.static(config.staticContentPath));
+    router.use('/reports', express.static(config.get('STATIC_CONTENT_PATH')));
 
     // Analytics API
     router.get('/v1/reports', async(req, res) => {

@@ -8,7 +8,7 @@ const consoleTransport = new winston.transports.Console({
 });
 
 const winstonLogger = new (winston.Logger)({
-  level: config.logLevel,
+  level: config.get('LOG_LEVEL'),
   timestamp: true,
   transports: [
     consoleTransport
