@@ -1,4 +1,4 @@
-import analytics from './api/analytics';
+import analyticsReports from './api/analytics-reports';
 import config from './config';
 import * as express from 'express';
 import {getLogger} from './logger';
@@ -49,10 +49,10 @@ class Server {
     router = express.Router();
 
     // Analytics Page
-    router.use('/reports', express.static(config.get('STATIC_CONTENT_PATH')));
+    router.use('/analytics-reports', express.static(config.get('STATIC_CONTENT_PATH')));
 
     // Add Analytics API
-    router.use('/v1/analytics', analytics);
+    router.use('/v1/analytics-reports', analyticsReports);
 
     // use router middleware
     this.app.use(router);
