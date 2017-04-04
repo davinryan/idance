@@ -1,4 +1,4 @@
-import AnalyticsReports from './api/analyticsReports';
+import analytics from './api/analytics';
 import config from './config';
 import * as express from 'express';
 import {getLogger} from './logger';
@@ -13,7 +13,6 @@ class Server {
   private app: express.Application;
 
   /** Google Analytics Reports API. */
-  private reports: AnalyticsReports;
 
   /**
    * Default Constructor
@@ -21,9 +20,6 @@ class Server {
   constructor() {
     // Create an express application
     this.app = express();
-
-    // Instantiate Reports API
-    this.reports = new AnalyticsReports();
 
     // Configure the application
     this.config();
@@ -55,25 +51,8 @@ class Server {
     // Analytics Page
     router.use('/reports', express.static(config.get('STATIC_CONTENT_PATH')));
 
-    // Analytics API
-    router.get('/v1/reports', async(req, res) => {
-      if (req.query.type === 'noEntrancesPerSiteSourceForLast30Days') {
-        let report = await this.reports.getNoEntrancesPerSiteSourceForLast30Days();
-        res.json(report)
-      } else {
-        res.json({
-          usage: 'To use this service set a parameter called \'type\' to one of the following types',
-          types: [
-            {
-              type: 'noEntrancesPerSiteSourceForLast30Days',
-              description: 'Reports on the number of hits per site source used to enter the main site',
-              exampleUsage: '?type\=noEntrancesPerSiteSourceForLast30Days'
-            }
-          ]
-        });
-      }
-
-    });
+    // Add Analytics API
+    router.use('/v1/analytics', analytics);
 
     // use router middleware
     this.app.use(router);
