@@ -37,7 +37,7 @@ class AnalyticsReports {
    * Return report on number of hits from different sources.
    * @returns {Promise<T>}
    */
-  public async getNoEntrancesPerSiteSourceForLast30Days(): any {
+  public async getNoEntrancesPerSiteSourceForLast30Days(): Promise<any> {
     const request: Request = {
       name: 'getNoEntrancesPerSiteSourceForLast30Days',
       payload: {
