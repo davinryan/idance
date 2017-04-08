@@ -65,20 +65,22 @@ class AnalyticsReports {
       }
     };
     let result = await this.batchGet(request);
-    const toConsole = (obj) => {
-      console.log('item');
-      console.dir(obj);
-      return obj;
+    const wrapInList = (obj) => {
+      return [obj];
     };
 
-    const dimensionName = R.pipe(R.head, R.path(['columnHeader', 'dimensions']), R.head, R.replace('ga:', ''))(result);
-    const metricName = R.pipe(R.head, R.path(['columnHeader', 'metricHeader', 'metricHeaderEntries']), R.head, R.path(['name']), R.replace('ga:', ''))(result);
-    const getMetric = R.lift(R.pipe(R.path(['metrics']), R.head, R.path(['values']), R.head, R.objOf(metricName)));
-    const getDimension = R.lift(R.pipe(R.path(['dimensions']), R.head, R.objOf(dimensionName)));
-    const formatDimMetricPairs = R.map(<any> R.converge(R.merge, [R.nth(0), R.nth(1)]));
-    const getDimMetricPairs = R.pipe(<any> R.converge(R.zip, [getDimension, getMetric]), formatDimMetricPairs);
-    const getRows = R.pipe(R.head, R.path(['data', 'rows']));
-    return R.pipe(getRows, getDimMetricPairs, toConsole)(result);
+    // Dimensions
+    const getDimensionsTitles = R.pipe(R.head, R.path(['columnHeader', 'dimensions']), R.map(R.replace('ga:', '')), wrapInList);
+    const getDimensionValues = R.pipe(R.head, R.path(['data', 'rows']), R.map(R.path(['dimensions'])));
+    const getDimensions = R.pipe(<any> R.converge(R.concat, [getDimensionsTitles, getDimensionValues]), R.splitAt(1), R.apply(R.lift(R.zipObj)));
+
+    // Metrics
+    const getMetricsTitles = R.pipe(R.head, R.path(['columnHeader', 'metricHeader', 'metricHeaderEntries']), R.map(R.pipe(R.path(['name']), R.replace('ga:', ''))), wrapInList);
+    const getMetricsValues = R.pipe(R.head, R.path(['data', 'rows']), R.map(R.path(['metrics'])));
+    const getMetrics = R.pipe(<any> R.converge(R.concat, [getMetricsTitles, getMetricsValues]), R.splitAt(1), R.apply(R.lift(R.zipObj)));
+
+    // Combine
+    return R.pipe(<any> R.converge(R.zip, [getDimensions, getMetrics]), R.map(R.mergeAll))(result);
   }
 
   /**
