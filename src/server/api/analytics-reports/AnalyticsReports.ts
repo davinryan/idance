@@ -71,12 +71,12 @@ class AnalyticsReports {
       return obj;
     };
 
-    const dimension = R.pipe(R.head, R.path(['columnHeader', 'dimensions']), R.head, R.replace('ga:', ''))(result);
-    const metric = R.pipe(R.head, R.path(['columnHeader', 'metricHeader', 'metricHeaderEntries']), R.head, R.path(['name']), R.replace('ga:', ''))(result);
-    const getValues = R.lift(R.pipe(R.path(['metrics']), R.head, R.path(['values']), R.head, R.objOf(metric)));
-    const getDimensions = R.lift(R.pipe(R.path(['dimensions']), R.head, R.objOf(dimension)));
+    const dimensionName = R.pipe(R.head, R.path(['columnHeader', 'dimensions']), R.head, R.replace('ga:', ''))(result);
+    const metricName = R.pipe(R.head, R.path(['columnHeader', 'metricHeader', 'metricHeaderEntries']), R.head, R.path(['name']), R.replace('ga:', ''))(result);
+    const getMetric = R.lift(R.pipe(R.path(['metrics']), R.head, R.path(['values']), R.head, R.objOf(metricName)));
+    const getDimension = R.lift(R.pipe(R.path(['dimensions']), R.head, R.objOf(dimensionName)));
     const formatDimMetricPairs = R.map(<any> R.converge(R.merge, [R.nth(0), R.nth(1)]));
-    const getDimMetricPairs = R.pipe(<any> R.converge(R.zip, [getDimensions, getValues]), formatDimMetricPairs);
+    const getDimMetricPairs = R.pipe(<any> R.converge(R.zip, [getDimension, getMetric]), formatDimMetricPairs);
     const getRows = R.pipe(R.head, R.path(['data', 'rows']));
     return R.pipe(getRows, getDimMetricPairs, toConsole)(result);
   }
