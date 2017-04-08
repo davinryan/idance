@@ -11,7 +11,6 @@ import {getLogger} from '../../logger';
 import * as google from 'googleapis';
 import config from '../../config';
 import * as R from 'ramda';
-import {Readable} from "stream";
 
 const analytics = google.analyticsreporting('v4');
 const logger = getLogger('AnalyticsReports');
@@ -73,13 +72,10 @@ class AnalyticsReports {
     };
 
     const dimension = R.pipe(R.head, R.path(['columnHeader', 'dimensions']), R.head)(result);
-    console.log(dimension);
     const metric = R.pipe(R.head, R.path(['columnHeader', 'metricHeader', 'metricHeaderEntries']), R.head, R.path(['name']))(result);
-    console.log(metric);
-
-    const getValues = R.lift(R.pipe(R.path(['metrics']), R.head, R.path(['values'])));
-    const getDimensions = R.lift(R.path(['dimensions']));
-    const getDimMetricPairs = R.pipe(<any> R.converge(R.zip, [getDimensions, getValues]), R.flatten);
+    const getValues = R.lift(R.pipe(R.path(['metrics']), R.head, R.path(['values']), R.head, R.objOf(R.toString(metric))));
+    const getDimensions = R.lift(R.pipe(R.path(['dimensions']), R.head, R.objOf(dimension)));
+    const getDimMetricPairs = R.pipe(<any> R.converge(R.zip, [getDimensions, getValues]));
     const getRows = R.pipe(R.head, R.path(['data', 'rows']));
     return R.pipe(getRows, getDimMetricPairs)(result);
   }
