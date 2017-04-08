@@ -11,6 +11,7 @@ import {getLogger} from '../../logger';
 import * as google from 'googleapis';
 import config from '../../config';
 import * as R from 'ramda';
+import {Readable} from "stream";
 
 const analytics = google.analyticsreporting('v4');
 const logger = getLogger('AnalyticsReports');
@@ -36,7 +37,7 @@ class AnalyticsReports {
    * Return report on number of hits from different sources.
    * @returns {Promise<T>}
    */
-  public async getNoEntrancesPerSiteSourceForLast30Days(): object {
+  public async getNoEntrancesPerSiteSourceForLast30Days(): any {
     const request: Request = {
       name: 'getNoEntrancesPerSiteSourceForLast30Days',
       payload: {
@@ -65,9 +66,22 @@ class AnalyticsReports {
       }
     };
     let result = await this.batchGet(request);
-    let dimensions = result[0].columnHeader.dimensions;
-    let metrics = result[0].columnHeader.metricHeader.metricHeaderEntries;
-    return R.pipe(R.head, R.path(['data', 'rows']))(result);
+    const toConsole = (obj) => {
+      console.log('item');
+      console.dir(obj);
+      return obj;
+    };
+
+    const dimension = R.pipe(R.head, R.path(['columnHeader', 'dimensions']), R.head)(result);
+    console.log(dimension);
+    const metric = R.pipe(R.head, R.path(['columnHeader', 'metricHeader', 'metricHeaderEntries']), R.head, R.path(['name']))(result);
+    console.log(metric);
+
+    const getValues = R.lift(R.pipe(R.path(['metrics']), R.head, R.path(['values'])));
+    const getDimensions = R.lift(R.path(['dimensions']));
+    const getDimMetricPairs = R.pipe(<any> R.converge(R.zip, [getDimensions, getValues]), R.flatten);
+    const getRows = R.pipe(R.head, R.path(['data', 'rows']));
+    return R.pipe(getRows, getDimMetricPairs)(result);
   }
 
   /**
@@ -91,7 +105,7 @@ class AnalyticsReports {
         resource: request.payload,
         auth: this.jwtClient
       }, (batchError, resp) => {
-        logger.info(request.name + ': ' + JSON.stringify(resp.reports[0]));
+        // logger.info(request.name + ': ' + JSON.stringify(resp.reports[0]));
         if (batchError) {
           logger.error(batchError);
           reject(batchError);
