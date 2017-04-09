@@ -11,6 +11,7 @@ import {getLogger} from '../../logger';
 import * as google from 'googleapis';
 import config from '../../config';
 import * as R from 'ramda';
+import {start} from "repl";
 
 const analytics = google.analyticsreporting('v4');
 const logger = getLogger('AnalyticsReports');
@@ -53,7 +54,8 @@ class AnalyticsReports {
    * Return report on number of hits from different sources.
    * @returns {Promise<T>}
    */
-  public async getNoEntrancesPerSiteSourceForLast30Days(): Promise<any> {
+  public async getNoEntrancesPerSiteSource(startDate: string): Promise<any> {
+    let actualStartDate = R.isNil(startDate) ? '30daysAgo' : startDate;
     const request: Request = {
       name: 'getNoEntrancesPerSiteSourceForLast30Days',
       payload: {
@@ -62,7 +64,7 @@ class AnalyticsReports {
             viewId: config.get('GOOGLE_ANALYTICS_VIEW_ID'),
             dateRanges: [
               {
-                startDate: '30daysAgo',
+                startDate: actualStartDate,
                 endDate: 'today'
               }
             ],
@@ -82,6 +84,22 @@ class AnalyticsReports {
       }
     };
     return await this.batchGetWithFormat(request);
+  }
+
+  public async getMostPopularDeviceByCategory(startDate: string) {
+
+  }
+
+  public async getMostPopularDeviceByDeviceType(startDate: string) {
+
+  }
+
+  public async getMostPopularBrowser(startDate: string) {
+
+  }
+
+  public async getMostPopularExistPage(startDate: string) {
+
   }
 
   private async batchGetWithFormat(request: Request): Promise<any> {
