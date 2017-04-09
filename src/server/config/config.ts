@@ -31,6 +31,12 @@ export const config: convict.Config = convict({
     default: 'idance@idance-163607.iam.gserviceaccount.com',
     env: 'GOOGLE_ANALYTICS_CLIENT_EMAIL'
   },
+  CACHE_TIMEOUT: {
+    doc: 'Time in hours to wait until cache should be cleared',
+    format: Number,
+    default: 24,
+    env: 'CACHE_TIMEOUT'
+  },
   LOG_LEVEL: {
     doc: 'Log level. Can be debug, warn, info or error',
     format: String,

@@ -15,6 +15,23 @@ import * as R from 'ramda';
 const analytics = google.analyticsreporting('v4');
 const logger = getLogger('AnalyticsReports');
 
+const wrapInList = (obj) => {
+  return [obj];
+};
+
+// Dimensions
+const getDimensionsTitles = R.pipe(R.head, R.path(['columnHeader', 'dimensions']), R.map(R.replace('ga:', '')), wrapInList);
+const getDimensionValues = R.pipe(R.head, R.path(['data', 'rows']), R.map(R.path(['dimensions'])));
+const getDimensions = R.pipe(<any> R.converge(R.concat, [getDimensionsTitles, getDimensionValues]), R.splitAt(1), R.apply(R.lift(R.zipObj)));
+
+// Metrics
+const getMetricsTitles = R.pipe(R.head, R.path(['columnHeader', 'metricHeader', 'metricHeaderEntries']), R.map(R.pipe(R.path(['name']), R.replace('ga:', ''))), wrapInList);
+const getMetricsValues = R.pipe(R.head, R.path(['data', 'rows']), R.map(R.path(['metrics'])));
+const getMetrics = R.pipe(<any> R.converge(R.concat, [getMetricsTitles, getMetricsValues]), R.splitAt(1), R.apply(R.lift(R.zipObj)));
+
+// Combined
+const getDimensionsWithMetrics = R.pipe(<any> R.converge(R.zip, [getDimensions, getMetrics]), R.map(R.mergeAll));
+
 /**
  * Analytics request.
  */
@@ -64,23 +81,15 @@ class AnalyticsReports {
         ]
       }
     };
+    return await this.batchGetWithFormat(request);
+  }
+
+  private async batchGetWithFormat(request: Request): Promise<any> {
+    // Call google analytics reporting API
     let result = await this.batchGet(request);
-    const wrapInList = (obj) => {
-      return [obj];
-    };
-
-    // Dimensions
-    const getDimensionsTitles = R.pipe(R.head, R.path(['columnHeader', 'dimensions']), R.map(R.replace('ga:', '')), wrapInList);
-    const getDimensionValues = R.pipe(R.head, R.path(['data', 'rows']), R.map(R.path(['dimensions'])));
-    const getDimensions = R.pipe(<any> R.converge(R.concat, [getDimensionsTitles, getDimensionValues]), R.splitAt(1), R.apply(R.lift(R.zipObj)));
-
-    // Metrics
-    const getMetricsTitles = R.pipe(R.head, R.path(['columnHeader', 'metricHeader', 'metricHeaderEntries']), R.map(R.pipe(R.path(['name']), R.replace('ga:', ''))), wrapInList);
-    const getMetricsValues = R.pipe(R.head, R.path(['data', 'rows']), R.map(R.path(['metrics'])));
-    const getMetrics = R.pipe(<any> R.converge(R.concat, [getMetricsTitles, getMetricsValues]), R.splitAt(1), R.apply(R.lift(R.zipObj)));
 
     // Combine
-    return R.pipe(<any> R.converge(R.zip, [getDimensions, getMetrics]), R.map(R.mergeAll))(result);
+    return getDimensionsWithMetrics(result);
   }
 
   /**
@@ -104,7 +113,7 @@ class AnalyticsReports {
         resource: request.payload,
         auth: this.jwtClient
       }, (batchError, resp) => {
-        // logger.info(request.name + ': ' + JSON.stringify(resp.reports[0]));
+        logger.info(request.name + ': ' + JSON.stringify(resp.reports[0]));
         if (batchError) {
           logger.error(batchError);
           reject(batchError);
