@@ -14,16 +14,36 @@ router.get('/', async(req, res) => {
     res.json(await analytics.getMostPopularDeviceByDeviceType(req.query.startDate));
   } else if (req.query.type === 'mostPopularBrowser') {
     res.json(await analytics.getMostPopularBrowser(req.query.startDate));
-  } else if (req.query.type === 'mostPopularExistPage') {
-    res.json(await analytics.getMostPopularExistPage(req.query.startDate));
+  } else if (req.query.type === 'mostPopularExitPage') {
+    res.json(await analytics.getMostPopularExitPage(req.query.startDate));
   } else {
     res.json({
       usage: 'To use this service set a parameter called \'type\' to one of the following types',
       types: [
         {
-          type: 'noEntrancesPerSiteSourceForLast30Days',
+          type: 'noEntrancesPerSiteSource',
           description: 'Reports on the number of hits per site source used to enter the main site',
-          exampleUsage: '?type\=noEntrancesPerSiteSourceForLast30Days'
+          exampleUsage: '?type\=noEntrancesPerSiteSourceForLast30Days&startDate=30daysAgo'
+        },
+        {
+          type: 'mostPopularDeviceByCategory',
+          description: 'Reports on the number of hits per Device by category (desktop, mobile etc...) used to enter the main site',
+          exampleUsage: '?type\=mostPopularDeviceByCategory&startDate=30daysAgo'
+        },
+        {
+          type: 'mostPopularDeviceByDeviceType',
+          description: 'Reports on the number of hits per device type (Android, Windows etc...) used to enter the main site',
+          exampleUsage: '?type\=mostPopularDeviceByDeviceType&startDate=30daysAgo'
+        },
+        {
+          type: 'mostPopularBrowser',
+          description: 'Reports on the number of hits per browser type used to enter the main site',
+          exampleUsage: '?type\=mostPopularBrowser&startDate=30daysAgo'
+        },
+        {
+          type: 'mostPopularExitPage',
+          description: 'Reports on the number of hits per exit page used to enter the main site',
+          exampleUsage: '?type\=mostPopularExitPage&startDate=30daysAgo'
         }
       ]
     });

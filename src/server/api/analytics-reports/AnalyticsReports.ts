@@ -57,7 +57,7 @@ class AnalyticsReports {
   public async getNoEntrancesPerSiteSource(startDate: string): Promise<any> {
     let actualStartDate = R.isNil(startDate) ? '30daysAgo' : startDate;
     const request: Request = {
-      name: 'getNoEntrancesPerSiteSourceForLast30Days',
+      name: 'noEntrancesPerSiteSource',
       payload: {
         reportRequests: [
           {
@@ -87,19 +87,131 @@ class AnalyticsReports {
   }
 
   public async getMostPopularDeviceByCategory(startDate: string) {
-
+    let actualStartDate = R.isNil(startDate) ? '30daysAgo' : startDate;
+    const request: Request = {
+      name: 'mostPopularDeviceByCategory',
+      payload: {
+        reportRequests: [
+          {
+            viewId: config.get('GOOGLE_ANALYTICS_VIEW_ID'),
+            dateRanges: [
+              {
+                startDate: actualStartDate,
+                endDate: 'today'
+              }
+            ],
+            metrics: [
+              {
+                  expression: 'ga:pageviews'
+              }
+            ],
+            orderBys: [
+              {fieldName: 'ga:pageviews', sortOrder: 'DESCENDING'}
+            ],
+            dimensions: [
+              {name: 'ga:deviceCategory'}
+            ]
+          }
+        ]
+      }
+    };
+    return await this.batchGetWithFormat(request);
   }
 
   public async getMostPopularDeviceByDeviceType(startDate: string) {
-
+    let actualStartDate = R.isNil(startDate) ? '30daysAgo' : startDate;
+    const request: Request = {
+      name: 'mostPopularDeviceByDeviceType',
+      payload: {
+        reportRequests: [
+          {
+            viewId: config.get('GOOGLE_ANALYTICS_VIEW_ID'),
+            dateRanges: [
+              {
+                startDate: actualStartDate,
+                endDate: 'today'
+              }
+            ],
+            metrics: [
+              {
+                expression: 'ga:pageviews'
+              }
+            ],
+            orderBys: [
+              {fieldName: 'ga:pageviews', sortOrder: 'DESCENDING'}
+            ],
+            dimensions: [
+              {name: 'ga:mobileDeviceInfo'}
+            ]
+          }
+        ]
+      }
+    };
+    return await this.batchGetWithFormat(request);
   }
 
   public async getMostPopularBrowser(startDate: string) {
-
+    let actualStartDate = R.isNil(startDate) ? '30daysAgo' : startDate;
+    const request: Request = {
+      name: 'mostPopularBrowser',
+      payload: {
+        reportRequests: [
+          {
+            viewId: config.get('GOOGLE_ANALYTICS_VIEW_ID'),
+            dateRanges: [
+              {
+                startDate: actualStartDate,
+                endDate: 'today'
+              }
+            ],
+            metrics: [
+              {
+                expression: 'ga:pageviews'
+              }
+            ],
+            orderBys: [
+              {fieldName: 'ga:pageviews', sortOrder: 'DESCENDING'}
+            ],
+            dimensions: [
+              {name: 'ga:browser'}
+            ]
+          }
+        ]
+      }
+    };
+    return await this.batchGetWithFormat(request);
   }
 
-  public async getMostPopularExistPage(startDate: string) {
-
+  public async getMostPopularExitPage(startDate: string) {
+    let actualStartDate = R.isNil(startDate) ? '30daysAgo' : startDate;
+    const request: Request = {
+      name: 'mostPopularExitPage',
+      payload: {
+        reportRequests: [
+          {
+            viewId: config.get('GOOGLE_ANALYTICS_VIEW_ID'),
+            dateRanges: [
+              {
+                startDate: actualStartDate,
+                endDate: 'today'
+              }
+            ],
+            metrics: [
+              {
+                expression: 'ga:pageviews'
+              }
+            ],
+            orderBys: [
+              {fieldName: 'ga:pageviews', sortOrder: 'DESCENDING'}
+            ],
+            dimensions: [
+              {name: 'ga:exitPagePath'}
+            ]
+          }
+        ]
+      }
+    };
+    return await this.batchGetWithFormat(request);
   }
 
   private async batchGetWithFormat(request: Request): Promise<any> {
