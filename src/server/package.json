@@ -1,14 +1,14 @@
 {
-  "name": "idance-analytics",
+  "name": "idance",
   "version": "0.0.0",
-  "description": "idance-analytics",
+  "description": "idance",
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/idance-analytics.git"
+    "url": "http://github.com/idance.git"
   },
   "license": "ISC"
 }

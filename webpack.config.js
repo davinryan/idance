@@ -5,6 +5,15 @@ const extend = require('extend');
 var webpack = require('webpack');
 var fs = require('fs');
 
+const nodeModules = {};
+fs.readdirSync('node_modules')
+    .filter(function (module) {
+      return ['.bin'].indexOf(module) === -1;
+    })
+    .forEach(function (module) {
+      nodeModules[module] = 'commonjs ' + module;
+    });
+
 const config = {
   devtool: "source-map",
   module: {
@@ -38,15 +47,6 @@ const clientConfig = extend(true, {}, config, {
     new HtmlWebpackPlugin({template: './src/client/index.ejs'})
   ]
 });
-
-const nodeModules = {};
-fs.readdirSync('node_modules')
-    .filter(function (module) {
-      return ['.bin'].indexOf(module) === -1;
-    })
-    .forEach(function (module) {
-      nodeModules[module] = 'commonjs ' + module;
-    });
 
 const serverConfig = extend(true, {}, config, {
   target: 'node',

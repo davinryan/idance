@@ -5,6 +5,10 @@ import * as apicache from 'apicache'
 import {getLogger} from './logger';
 const logger = getLogger('Server');
 const cache = apicache.middleware;
+const onlyStatus200 = (req, resp) => {
+  return resp.statusCode === 200
+};
+const cacheSuccesses = cache(config.get('CACHE_TIMEOUT') + ' hours', onlyStatus200);
 
 /**
  * Main Server to Run the back and front end.
@@ -38,13 +42,6 @@ class Server {
     this.app.listen(config.get('PORT'), () => {
       logger.info('Application now listening on port %s ', config.get('PORT'));
     });
-
-    // Configure Caching
-    const onlyStatus200 = (req, resp) => {
-      return resp.statusCode === 200
-    };
-    const cacheSuccesses = cache(config.get('CACHE_TIMEOUT') + ' hours', onlyStatus200);
-    this.app.use(cacheSuccesses);
   }
 
   /**
@@ -60,7 +57,7 @@ class Server {
     router.use('/analytics-reports', express.static(config.get('STATIC_CONTENT_PATH')));
 
     // Add Analytics API
-    router.use('/v1/analytics-reports', analyticsReports);
+    router.use('/v1/analytics-reports', cache(cacheSuccesses), analyticsReports);
 
     // use router middleware
     this.app.use(router);
