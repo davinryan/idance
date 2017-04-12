@@ -19,25 +19,25 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         loader: 'ts-loader'
       },
       {
         enforce: 'pre',
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         loader: 'tslint-loader'
       }
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js']
   }
 };
 
 const clientConfig = extend(true, {}, config, {
   target: 'web',
   entry: {
-    app: ['./src/client/app/index.ts']
+    app: ['./src/client/app/index.tsx']
   },
   output: {
     path: path.resolve(__dirname, 'dist/public'),

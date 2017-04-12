@@ -21,6 +21,9 @@
     "experimentalDecorators": true,
 
     // Warn on expressions and declarations with an implied 'any' type.
-    "noImplicitAny": false
+    "noImplicitAny": false,
+
+    // Enable JSX
+    "jsx": "react"
   }
 }

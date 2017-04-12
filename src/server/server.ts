@@ -54,7 +54,12 @@ class Server {
     router = express.Router();
 
     // Analytics Page
-    router.use('/analytics-reports', express.static(config.get('STATIC_CONTENT_PATH')));
+    router.use(config.get('CONTEXT_ROOT'), express.static(config.get('STATIC_CONTENT_PATH')));
+
+    // Always return the main index.html, so react-router render the route in the client
+    router.get(config.get('CONTEXT_ROOT') + '/*', (req, res) => {
+      res.sendFile(config.get('STATIC_CONTENT_PATH') + '/index.html');
+    });
 
     // Add Analytics API
     router.use('/v1/analytics-reports', cache(cacheSuccesses), analyticsReports);

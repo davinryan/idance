@@ -50,7 +50,7 @@ export const config: convict.Config = convict({
     env: 'STATIC_CONTENT_PATH'
   },
   PORT: {
-    doc: 'Context path for main URL',
+    doc: 'Default Path',
     format: Number,
     default: 3000,
     env: 'PORT'
@@ -58,7 +58,7 @@ export const config: convict.Config = convict({
   CONTEXT_ROOT: {
     doc: 'Context path for main URL',
     format: String,
-    default: 'reports',
+    default: '/analytics-reports',
     env: 'CONTEXT_ROOT'
   }
 });
