@@ -1,4 +1,5 @@
 import * as React from 'react';
+import CustomChart from '../charts/CustomChart';
 
 interface IMainPage {
   location: any;
@@ -13,15 +14,37 @@ class MainPage extends React.Component<IMainPage, any> {
 
   render() {
     document.title = 'MainPage';
+    const data = {
+      labels: [
+        "Red",
+        "Blue",
+        "Yellow"
+      ],
+      datasets: [
+        {
+          data: [300, 50, 100],
+          backgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
+          ],
+          hoverBackgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56"
+          ]
+        }]
+    };
+    const options = {
+      responsive: true
+    };
+    const chartSize = {width: '400px'};
 
     return (
-      <div>
-        <header className="header">
-        </header>
-        <main>
+        <div>
           <div>Hello from Davin</div>
-        </main>
-      </div>
+          <CustomChart data={data} options={options} type="doughnut" size={chartSize}/>
+        </div>
     );
   }
 }
