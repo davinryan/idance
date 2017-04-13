@@ -36,5 +36,5 @@ it('ChartjsConfigBuilder can build basic config', () => {
         ]
       }]
   };
-  expect(ChartjsConfigBuilder.buildChartDataConfigFromData(data)).toBe(result);
+  expect(ChartjsConfigBuilder.buildChartDataConfigFromData(data)).toEqual(result);
 });
