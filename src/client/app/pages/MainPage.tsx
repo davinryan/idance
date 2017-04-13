@@ -14,27 +14,20 @@ class MainPage extends React.Component<IMainPage, any> {
 
   render() {
     document.title = 'MainPage';
-    const data = {
-      labels: [
-        "Red",
-        "Blue",
-        "Yellow"
-      ],
-      datasets: [
-        {
-          data: [300, 50, 100],
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ]
-        }]
-    };
+    const data =
+        [
+          {
+            label: "google / organic",
+            data: 138
+          },
+          {
+            label: "cerocwellington.com / referral",
+            data: 99
+          },
+          {
+            label: "(direct) / (none)",
+            data: 67
+          }];
     const options = {
       responsive: true
     };
@@ -42,7 +35,7 @@ class MainPage extends React.Component<IMainPage, any> {
 
     return (
         <div>
-          <div>Hello from Davin</div>
+          <p>Graph of stuff</p>
           <CustomChart data={data} options={options} type="doughnut" size={chartSize}/>
         </div>
     );

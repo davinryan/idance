@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as Chart from 'chart.js';
 import ReactInstance = React.ReactInstance;
+import ChartjsConfigBuilder from './ChartjsConigBuilder';
 
 interface ISize {
   width?: string,
@@ -20,19 +21,19 @@ class CustomChart extends React.Component<ICustomChart, any> {
     super(props);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     let chartCanvas = this.refs.chart as HTMLCanvasElement;
     let myChart = new Chart(chartCanvas, {
       type: this.props.type,
-      data: this.props.data,
+      data: ChartjsConfigBuilder.buildChartDataConfigFromData(this.props.data),
       options: this.props.options
     });
     this.setState({chart: myChart});
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     let chart = this.state.chart;
-    let data = this.props.data;
+    let data = ChartjsConfigBuilder.buildChartDataConfigFromData(this.props.data);
 
     data.datasets.forEach((dataset, i) => chart.data.datasets[i].data = dataset.data);
 
@@ -40,7 +41,7 @@ class CustomChart extends React.Component<ICustomChart, any> {
     chart.update();
   }
 
-  render () {
+  render() {
     return (
         <div style={this.props.size}>
           <canvas ref={'chart'}></canvas>
