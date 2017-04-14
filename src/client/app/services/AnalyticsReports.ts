@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as R from 'ramda';
 
 const getLabel = R.pipe(R.path(['sourceMedium']), R.objOf('label'));
-const getData = R.pipe(R.path(['entrances', 'values']), R.head, R.objOf('data'));
+const getData = R.pipe(R.path(['entrances', 'values']), R.head, parseInt, R.objOf('data'));
 const convertToChartType = R.pipe(<any> R.converge(R.merge, [getLabel, getData]));
 
 export default class AnalyticsReports {

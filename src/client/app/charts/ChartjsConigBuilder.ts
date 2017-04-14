@@ -49,7 +49,12 @@ class ChartjsConigBuilder {
   }
 
   private static getColourForIndex(value: any, index: number): string {
-    return ChartjsConigBuilder.NICE_COLOURS[index];
+
+    if (index < ChartjsConigBuilder.NICE_COLOURS.length - 1) {
+      return ChartjsConigBuilder.NICE_COLOURS[index];
+    } else {
+      return "#ECF0F1";
+    }
   }
 }
 

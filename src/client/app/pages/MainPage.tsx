@@ -13,40 +13,18 @@ class MainPage extends React.Component<IMainPage, any> {
 
   constructor(props: IMainPage) {
     super(props);
+    this.state = {data: []};
+  }
+
+  componentDidMount() {
+    analyticsReportsService.noEntrancesPerSiteSource().then((result) => {
+      this.setState({data: result});
+    });
   }
 
   render() {
     document.title = 'MainPage';
-    analyticsReportsService.noEntrancesPerSiteSource().then((result) => {
-      console.log(result);
-    });
 
-    const data =
-        [
-          {
-            label: "google / organic",
-            data: 138
-          },
-          {
-            label: "cerocwellington.com / referral",
-            data: 99
-          },
-          {
-            label: "(direct) / (none)",
-            data: 67
-          },
-          {
-            label: "google / organic",
-            data: 138
-          },
-          {
-            label: "cerocwellington.com / referral",
-            data: 99
-          },
-          {
-            label: "(direct) / (none)",
-            data: 67
-          }];
     const options = {
       responsive: true
     };
@@ -55,7 +33,7 @@ class MainPage extends React.Component<IMainPage, any> {
     return (
         <div>
           <p>Graph of stuff</p>
-          <CustomChart data={data} options={options} size={chartSize}/>
+          <CustomChart data={this.state.data} options={options} size={chartSize}/>
         </div>
     );
   }
