@@ -15,15 +15,15 @@ it('ChartjsConfigBuilder can build basic config', () => {
           label: "(direct) / (none)",
           data: 67
         }];
-  const result = {
+  const expected = {
     labels: [
-      "Red",
-      "Blue",
-      "Yellow"
+      "google / organic",
+      "cerocwellington.com / referral",
+      "(direct) / (none)"
     ],
     datasets: [
       {
-        data: [300, 50, 100],
+        data: [138, 99, 67],
         backgroundColor: [
           "#FF6384",
           "#36A2EB",
@@ -36,5 +36,6 @@ it('ChartjsConfigBuilder can build basic config', () => {
         ]
       }]
   };
-  expect(ChartjsConfigBuilder.buildChartDataConfigFromData(data)).toEqual(result);
+  const result = ChartjsConfigBuilder.buildChartDataConfigFromData(data);
+  expect(result).toEqual(expected);
 });

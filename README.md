@@ -23,6 +23,12 @@ https://developers.google.com/analytics/devguides/reporting/core/v4/basics
 ### Ramda Cookbook
 https://github.com/ramda/ramda/wiki/Cookbook
 
+### Jest Expect API
+https://facebook.github.io/jest/docs/expect.html#content
+
+### Great place for colours
+https://flatuicolors.com/
+
 ## Fetch dependencies
 ```
 npm install

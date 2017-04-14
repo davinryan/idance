@@ -27,6 +27,18 @@ class MainPage extends React.Component<IMainPage, any> {
           {
             label: "(direct) / (none)",
             data: 67
+          },
+          {
+            label: "google / organic",
+            data: 138
+          },
+          {
+            label: "cerocwellington.com / referral",
+            data: 99
+          },
+          {
+            label: "(direct) / (none)",
+            data: 67
           }];
     const options = {
       responsive: true
