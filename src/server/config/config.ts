@@ -55,11 +55,11 @@ export const config: convict.Config = convict({
     default: 3000,
     env: 'PORT'
   },
-  CONTEXT_ROOT: {
-    doc: 'Context path for main URL',
+  REPORTS_CONTEXT_ROOT: {
+    doc: 'Context path for main reporting URL',
     format: String,
     default: '/analytics-reports',
-    env: 'CONTEXT_ROOT'
+    env: 'REPORTS_CONTEXT_ROOT'
   }
 });
 

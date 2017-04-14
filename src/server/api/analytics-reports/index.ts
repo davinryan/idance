@@ -1,11 +1,17 @@
 import AnalyticsReports from './AnalyticsReports'
 import * as express from 'express';
-
+import config from '../../config';
+import * as apicache from 'apicache';
+const cache = apicache.middleware;
+const onlyStatus200 = (req, resp) => {
+  return resp.statusCode === 200
+};
+const cacheSuccesses = cache(config.get('CACHE_TIMEOUT') + ' hours', onlyStatus200);
 const router = express.Router();
 const analytics = new AnalyticsReports();
 
 // Analytics API
-router.get('/', async(req, res) => {
+router.get('/', cache(cacheSuccesses), async(req, res) => {
   if (req.query.type === 'noEntrancesPerSiteSource') {
     res.json(await analytics.getNoEntrancesPerSiteSource(req.query.startDate));
   } else if (req.query.type === 'mostPopularDeviceByCategory') {

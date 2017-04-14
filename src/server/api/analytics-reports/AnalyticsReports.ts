@@ -11,7 +11,6 @@ import {getLogger} from '../../logger';
 import * as google from 'googleapis';
 import config from '../../config';
 import * as R from 'ramda';
-import {start} from "repl";
 
 const analytics = google.analyticsreporting('v4');
 const logger = getLogger('AnalyticsReports');

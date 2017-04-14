@@ -1,14 +1,8 @@
 import analyticsReports from './api/analytics-reports';
 import config from './config';
 import * as express from 'express';
-import * as apicache from 'apicache'
 import {getLogger} from './logger';
 const logger = getLogger('Server');
-const cache = apicache.middleware;
-const onlyStatus200 = (req, resp) => {
-  return resp.statusCode === 200
-};
-const cacheSuccesses = cache(config.get('CACHE_TIMEOUT') + ' hours', onlyStatus200);
 
 /**
  * Main Server to Run the back and front end.
@@ -54,15 +48,15 @@ class Server {
     router = express.Router();
 
     // Analytics Page
-    router.use(config.get('CONTEXT_ROOT'), express.static(config.get('STATIC_CONTENT_PATH')));
+    router.use(config.get('REPORTS_CONTEXT_ROOT'), express.static(config.get('STATIC_CONTENT_PATH')));
 
     // Always return the main index.html, so react-router render the route in the client
-    router.get(config.get('CONTEXT_ROOT') + '/*', (req, res) => {
+    router.get(config.get('REPORTS_CONTEXT_ROOT') + '/*', (req, res) => {
       res.sendFile(config.get('STATIC_CONTENT_PATH') + '/index.html');
     });
 
     // Add Analytics API
-    router.use('/v1/analytics-reports', cache(cacheSuccesses), analyticsReports);
+    router.use('/v1/analytics-reports', analyticsReports);
 
     // use router middleware
     this.app.use(router);

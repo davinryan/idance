@@ -1,5 +1,8 @@
 import * as React from 'react';
 import CustomChart from '../charts/DoughnutChart';
+import Services from '../services';
+
+const analyticsReportsService = Services.getAnalyticsReportsService();
 
 interface IMainPage {
   location: any;
@@ -14,6 +17,10 @@ class MainPage extends React.Component<IMainPage, any> {
 
   render() {
     document.title = 'MainPage';
+    analyticsReportsService.noEntrancesPerSiteSource().then((result) => {
+      console.log(result);
+    });
+
     const data =
         [
           {
