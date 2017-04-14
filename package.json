@@ -53,6 +53,7 @@
     "@types/react": "^15.0.21",
     "@types/react-dom": "^0.14.23",
     "@types/react-router": "^4.0.4",
+    "@types/request": "0.0.42",
     "@types/winston": "^2.2.0",
     "apicache": "^0.8.4",
     "chart.js": "^2.5.0",
@@ -64,6 +65,7 @@
     "react-dom": "^15.5.4",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.1.0",
+    "request": "^2.81.0",
     "winston": "^2.3.1"
   }
 }

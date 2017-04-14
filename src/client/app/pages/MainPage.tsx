@@ -1,5 +1,5 @@
 import * as React from 'react';
-import CustomChart from '../charts/CustomChart';
+import CustomChart from '../charts/DoughnutChart';
 
 interface IMainPage {
   location: any;
@@ -48,7 +48,7 @@ class MainPage extends React.Component<IMainPage, any> {
     return (
         <div>
           <p>Graph of stuff</p>
-          <CustomChart data={data} options={options} type="doughnut" size={chartSize}/>
+          <CustomChart data={data} options={options} size={chartSize}/>
         </div>
     );
   }

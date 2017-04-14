@@ -11,7 +11,6 @@ interface ISize {
 interface ICustomChart {
   data: any,
   options: any,
-  type: string,
   size: ISize
 }
 
@@ -24,7 +23,7 @@ class CustomChart extends React.Component<ICustomChart, any> {
   componentDidMount() {
     let chartCanvas = this.refs.chart as HTMLCanvasElement;
     let myChart = new Chart(chartCanvas, {
-      type: this.props.type,
+      type: "doughnut",
       data: ChartjsConfigBuilder.buildChartDataConfigFromData(this.props.data),
       options: this.props.options
     });
