@@ -1,7 +1,7 @@
 import * as React from 'react';
 import CustomChart from '../charts/DoughnutChart';
 import Services from '../services';
-
+require('./mainPage.scss');
 const analyticsReportsService = Services.getAnalyticsReportsService();
 
 interface IMainPage {

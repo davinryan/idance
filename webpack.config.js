@@ -1,5 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractSass = new ExtractTextPlugin({
+  filename: "bundle.[contenthash].css"
+});
 const path = require('path');
 const extend = require('extend');
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -32,13 +36,15 @@ const config = {
       },
       {
         test: /\.scss$/,
-        use: [{
-          loader: "style-loader" // creates style nodes from JS strings
-        }, {
-          loader: "css-loader" // translates CSS into CommonJS
-        }, {
-          loader: "sass-loader" // compiles Sass to CSS
-        }]
+        use: extractSass.extract({
+          use: [{
+            loader: "css-loader"
+          }, {
+            loader: "sass-loader"
+          }],
+          // use style-loader in development
+          fallback: "style-loader"
+        })
       }
     ]
   },
@@ -54,10 +60,11 @@ const clientConfig = extend(true, {}, config, {
   },
   output: {
     path: path.resolve(__dirname, 'dist/public'),
-    filename: 'app/bundle.js'
+    filename: 'app/bundle.[hash].js'
   },
   plugins: [
-    new HtmlWebpackPlugin({template: './src/client/index.ejs'})
+    new HtmlWebpackPlugin({template: './src/client/index.ejs'}),
+    extractSass
   ]
 });
 
@@ -77,7 +84,7 @@ const serverConfig = extend(true, {}, config, {
   },
   output: {
     path: path.resolve(__dirname, 'dist/server'),
-    filename: 'index.js'
+    filename: 'index.[hash].js'
   },
   externals: nodeModules,
   plugins: [
