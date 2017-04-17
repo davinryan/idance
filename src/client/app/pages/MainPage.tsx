@@ -62,9 +62,11 @@ class MainPage extends React.Component<IMainPage, any> {
           </div>
 
           {/*noEntrancesPerSiteSource*/}
-          <div>
-            <label>How are people getting to my site?</label>
-            <CustomChart data={this.state.noEntrancesPerSiteSource} options={options}/>
+          <div className="donught-chart">
+            <label className="title">How are people getting to my site?</label>
+            <div className="chart">
+              <CustomChart data={this.state.noEntrancesPerSiteSource} options={options}/>
+            </div>
           </div>
 
           {/*mostPopularExitPage*/}
