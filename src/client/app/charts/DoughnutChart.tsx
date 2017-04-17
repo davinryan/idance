@@ -5,17 +5,14 @@ import ChartjsConfigBuilder from './ChartjsConigBuilder';
 
 interface ICustomChart {
   data: any,
-  options: any
+  options: any,
+  clazz?: string
 }
 
 class CustomChart extends React.Component<ICustomChart, any> {
 
-  private chartSize: any;
-
   constructor(props: ICustomChart) {
     super(props);
-
-    this.chartSize = {width: '100%', height: '100%'};
   }
 
   componentDidMount() {
@@ -48,7 +45,7 @@ class CustomChart extends React.Component<ICustomChart, any> {
 
   render() {
     return (
-        <div style={this.chartSize}>
+        <div className={this.props.clazz}>
           <canvas ref={'chart'}></canvas>
         </div>
     );

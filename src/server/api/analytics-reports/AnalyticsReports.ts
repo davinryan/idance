@@ -81,7 +81,8 @@ class AnalyticsReports {
             ],
             dimensions: [
               {name: 'ga:sourceMedium'}
-            ]
+            ],
+            pageSize: 15
           }
         ]
       }
@@ -113,7 +114,8 @@ class AnalyticsReports {
             ],
             dimensions: [
               {name: 'ga:deviceCategory'}
-            ]
+            ],
+            pageSize: 15
           }
         ]
       }
@@ -145,7 +147,8 @@ class AnalyticsReports {
             ],
             dimensions: [
               {name: 'ga:mobileDeviceInfo'}
-            ]
+            ],
+            pageSize: 15
           }
         ]
       }
@@ -177,7 +180,8 @@ class AnalyticsReports {
             ],
             dimensions: [
               {name: 'ga:browser'}
-            ]
+            ],
+            pageSize: 15
           }
         ]
       }
@@ -209,7 +213,8 @@ class AnalyticsReports {
             ],
             dimensions: [
               {name: 'ga:exitPagePath'}
-            ]
+            ],
+            pageSize: 15
           }
         ]
       }
@@ -241,7 +246,8 @@ class AnalyticsReports {
             ],
             dimensions: [
               {name: 'ga:pagePath'}
-            ]
+            ],
+            pageSize: 15
           }
         ]
       }

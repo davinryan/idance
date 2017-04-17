@@ -1,6 +1,7 @@
 import * as React from 'react';
-import CustomChart from '../charts/DoughnutChart';
+import DoughnutChart from '../charts/DoughnutChart';
 import Services from '../services';
+
 require('./mainPage.scss');
 const analyticsReportsService = Services.getAnalyticsReportsService();
 
@@ -57,46 +58,51 @@ class MainPage extends React.Component<IMainPage, any> {
 
     return (
         <div className="mainPage">
+          <button className="btn btn-default">Click me!</button>
           <div className="header">
             <label className="title">Analytics Reports for www.idance.co.nz</label>
           </div>
 
-          {/*noEntrancesPerSiteSource*/}
-          <div className="donught-chart">
-            <label className="title">How are people getting to my site?</label>
-            <div className="chart">
-              <CustomChart data={this.state.noEntrancesPerSiteSource} options={options}/>
+          <div className="twoChartColumns">
+            <div className="chartColumn">
+              {/*noEntrancesPerSiteSource*/}
+              <div className="donughtChart">
+                <label className="chartHeader">How are people getting to my site?</label>
+                <DoughnutChart clazz="chart" data={this.state.noEntrancesPerSiteSource} options={options}/>
+              </div>
+
+              {/*mostPopularExitPage*/}
+              <div className="donughtChart">
+                <label className="chartHeader">What page do people leave my site from?</label>
+                <DoughnutChart clazz="chart" data={this.state.mostPopularExitPage} options={options}/>
+              </div>
+
+              {/*mostPopularPage*/}
+              <div className="donughtChart">
+                <label className="chartHeader">What page do people use the most?</label>
+                <DoughnutChart clazz="chart" data={this.state.mostPopularPage} options={options}/>
+              </div>
             </div>
-          </div>
 
-          {/*mostPopularExitPage*/}
-          <div>
-            <label>What page do people leave my site from?</label>
-            <CustomChart data={this.state.mostPopularExitPage} options={options}/>
-          </div>
+            <div className="chartColumn">
+              {/*mostPopularDeviceByCategory*/}
+              <div className="donughtChart">
+                <label className="chartHeader">Are my users desktop or mobile users?</label>
+                <DoughnutChart clazz="chart" data={this.state.mostPopularDeviceByCategory} options={options}/>
+              </div>
 
-          {/*mostPopularPage*/}
-          <div>
-            <label>What page do people use the most?</label>
-            <CustomChart data={this.state.mostPopularPage} options={options}/>
-          </div>
+              {/*mostPopularDeviceByDeviceType*/}
+              <div className="donughtChart">
+                <label className="chartHeader">What device do people use to get to my site?</label>
+                <DoughnutChart clazz="chart" data={this.state.mostPopularDeviceByDeviceType} options={options}/>
+              </div>
 
-          {/*mostPopularDeviceByCategory*/}
-          <div>
-            <label>Are my users desktop or mobile users?</label>
-            <CustomChart data={this.state.mostPopularDeviceByCategory} options={options}/>
-          </div>
-
-          {/*mostPopularDeviceByDeviceType*/}
-          <div>
-            <label>What device do people use to get to my site?</label>
-            <CustomChart data={this.state.mostPopularDeviceByDeviceType} options={options}/>
-          </div>
-
-          {/*mostPopularBrowser*/}
-          <div>
-            <label>What browser do people use to get to my site?</label>
-            <CustomChart data={this.state.mostPopularBrowser} options={options}/>
+              {/*mostPopularBrowser*/}
+              <div className="donughtChart">
+                <label className="chartHeader">What browser do people use to get to my site?</label>
+                <DoughnutChart clazz="chart" data={this.state.mostPopularBrowser} options={options}/>
+              </div>
+            </div>
           </div>
         </div>
     );
