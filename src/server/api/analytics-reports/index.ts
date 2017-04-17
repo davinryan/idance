@@ -1,17 +1,17 @@
-import AnalyticsReports from './AnalyticsReports'
+import AnalyticsReports from './AnalyticsReports';
 import * as express from 'express';
 import config from '../../config';
 import * as apicache from 'apicache';
 const cache = apicache.middleware;
 const onlyStatus200 = (req, resp) => {
-  return resp.statusCode === 200
+  return resp.statusCode === 200;
 };
 const cacheSuccesses = cache(config.get('CACHE_TIMEOUT') + ' hours', onlyStatus200);
 const router = express.Router();
 const analytics = new AnalyticsReports();
 
 // Analytics API
-router.get('/', cache(cacheSuccesses), async(req, res) => {
+router.get('/', cache(cacheSuccesses), async (req, res) => {
   if (req.query.type === 'noEntrancesPerSiteSource') {
     res.json(await analytics.getNoEntrancesPerSiteSource(req.query.startDate));
   } else if (req.query.type === 'mostPopularDeviceByCategory') {
@@ -35,12 +35,14 @@ router.get('/', cache(cacheSuccesses), async(req, res) => {
         },
         {
           type: 'mostPopularDeviceByCategory',
-          description: 'Reports on the number of hits per Device by category (desktop, mobile etc...) used to enter the main site',
+          description: 'Reports on the number of hits per Device by category (desktop, mobile etc...) ' +
+          'used to enter the main site',
           exampleUsage: '?type\=mostPopularDeviceByCategory&startDate=30daysAgo'
         },
         {
           type: 'mostPopularDeviceByDeviceType',
-          description: 'Reports on the number of hits per device type (Android, Windows etc...) used to enter the main site',
+          description: 'Reports on the number of hits per device type (Android, Windows etc...) used to ' +
+          'enter the main site',
           exampleUsage: '?type\=mostPopularDeviceByDeviceType&startDate=30daysAgo'
         },
         {

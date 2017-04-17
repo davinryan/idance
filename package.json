@@ -8,8 +8,8 @@
     "client": "webpack --watch &",
     "server": "node_modules/nodemon/bin/nodemon.js",
     "build": "webpack",
-    "test": "karma start",
-    "test-watch": "karma start --no-single-run --auto-watch"
+    "test": "jest",
+    "test-watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,9 @@
     "install": "^0.8.8",
     "istanbul-instrumenter-loader": "^1.1.0",
     "jest": "^19.0.2",
+    "node-sass": "^4.5.2",
     "nodemon": "^1.11.0",
+    "sass-loader": "^6.0.3",
     "ts-jest": "^19.0.9",
     "ts-loader": "^2.0.0",
     "ts-node": "^3.0.2",

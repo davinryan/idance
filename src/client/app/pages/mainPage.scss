@@ -1,7 +1,13 @@
 .mainPage {
-  header {
-    title {
-
+  width: 50%;
+  .header {
+    .title {
+      font-size: 24pt;
+      font-weight: bold;
     }
   }
+}
+
+.davin {
+  width: 100%;
 }

@@ -2,6 +2,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const extend = require('extend');
+const nodeEnv = process.env.NODE_ENV || 'development';
+const isProduction = nodeEnv === 'production';
+
 var webpack = require('webpack');
 var fs = require('fs');
 
@@ -15,7 +18,7 @@ fs.readdirSync('node_modules')
     });
 
 const config = {
-  devtool: "source-map",
+  devtool: isProduction ? 'eval' : 'source-map',
   module: {
     rules: [
       {
@@ -26,11 +29,21 @@ const config = {
         enforce: 'pre',
         test: /\.tsx?$/,
         loader: 'tslint-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader" // creates style nodes from JS strings
+        }, {
+          loader: "css-loader" // translates CSS into CommonJS
+        }, {
+          loader: "sass-loader" // compiles Sass to CSS
+        }]
       }
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js', '.scss']
   }
 };
 
