@@ -213,6 +213,38 @@ class AnalyticsReports {
     return await this.batchGetWithFormat(request);
   }
 
+  public async getMostPopularPage(startDate: string) {
+    let actualStartDate = R.isNil(startDate) ? '30daysAgo' : startDate;
+    const request: Request = {
+      name: 'mostPopularPage',
+      payload: {
+        reportRequests: [
+          {
+            viewId: config.get('GOOGLE_ANALYTICS_VIEW_ID'),
+            dateRanges: [
+              {
+                startDate: actualStartDate,
+                endDate: 'today'
+              }
+            ],
+            metrics: [
+              {
+                expression: 'ga:pageviews'
+              }
+            ],
+            orderBys: [
+              {fieldName: 'ga:pageviews', sortOrder: 'DESCENDING'}
+            ],
+            dimensions: [
+              {name: 'ga:pagePath'}
+            ]
+          }
+        ]
+      }
+    };
+    return await this.batchGetWithFormat(request);
+  }
+
   private async batchGetWithFormat(request: Request): Promise<any> {
     // Call google analytics reporting API
     let result = await this.batchGet(request);

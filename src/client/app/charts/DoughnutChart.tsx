@@ -3,21 +3,19 @@ import * as Chart from 'chart.js';
 import ReactInstance = React.ReactInstance;
 import ChartjsConfigBuilder from './ChartjsConigBuilder';
 
-interface ISize {
-  width?: string,
-  height?: string
-}
-
 interface ICustomChart {
   data: any,
-  options: any,
-  size: ISize
+  options: any
 }
 
 class CustomChart extends React.Component<ICustomChart, any> {
 
+  private chartSize: any;
+
   constructor(props: ICustomChart) {
     super(props);
+
+    this.chartSize = {width: '100%', height: '100%'};
   }
 
   componentDidMount() {
@@ -41,7 +39,6 @@ class CustomChart extends React.Component<ICustomChart, any> {
   componentDidUpdate() {
     let chart = this.state.chart;
     let data = ChartjsConfigBuilder.buildChartDataConfigFromData(this.props.data);
-    console.log(data);
 
     data.datasets.forEach((dataset, i) => chart.data.datasets[i].data = dataset.data);
 
@@ -51,7 +48,7 @@ class CustomChart extends React.Component<ICustomChart, any> {
 
   render() {
     return (
-        <div style={this.props.size}>
+        <div style={this.chartSize}>
           <canvas ref={'chart'}></canvas>
         </div>
     );

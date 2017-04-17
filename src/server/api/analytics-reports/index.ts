@@ -22,6 +22,8 @@ router.get('/', cache(cacheSuccesses), async(req, res) => {
     res.json(await analytics.getMostPopularBrowser(req.query.startDate));
   } else if (req.query.type === 'mostPopularExitPage') {
     res.json(await analytics.getMostPopularExitPage(req.query.startDate));
+  } else if (req.query.type === 'mostPopularPage') {
+    res.json(await analytics.getMostPopularPage(req.query.startDate));
   } else {
     res.json({
       usage: 'To use this service set a parameter called \'type\' to one of the following types',
@@ -50,6 +52,11 @@ router.get('/', cache(cacheSuccesses), async(req, res) => {
           type: 'mostPopularExitPage',
           description: 'Reports on the number of hits per exit page used to enter the main site',
           exampleUsage: '?type\=mostPopularExitPage&startDate=30daysAgo'
+        },
+        {
+          type: 'mostPopularPage',
+          description: 'Reports on the number of hits per page on the main site',
+          exampleUsage: '?type\=mostPopularPage&startDate=30daysAgo'
         }
       ]
     });
