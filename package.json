@@ -1,7 +1,7 @@
 {
-  "name": "idance-analytics",
+  "name": "idance",
   "version": "0.0.0",
-  "description": "idance-analytics",
+  "description": "idance",
   "main": "server/index.js",
   "scripts": {
     "start": "npm run client & npm run server",

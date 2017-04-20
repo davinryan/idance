@@ -2,6 +2,7 @@ import analyticsReports from './api/analytics-reports';
 import config from './config';
 import * as express from 'express';
 import {getLogger} from './logger';
+import * as path from 'path';
 const logger = getLogger('Server');
 
 /**
@@ -48,11 +49,13 @@ class Server {
     router = express.Router();
 
     // Analytics Page
-    router.use(config.get('REPORTS_CONTEXT_ROOT'), express.static(config.get('STATIC_CONTENT_PATH')));
+    const staticContentLocation = path.join(__dirname, config.get('STATIC_CONTENT_PATH'));
+    logger.info('################## ', staticContentLocation);
+    router.use(config.get('REPORTS_CONTEXT_ROOT'), express.static(staticContentLocation));
 
     // Always return the main index.html, so react-router render the route in the client
-    router.get(config.get('REPORTS_CONTEXT_ROOT') + '/*', (req, res) => {
-      res.sendFile(config.get('STATIC_CONTENT_PATH') + '/index.html');
+    router.get(staticContentLocation + '/*', (req, res) => {
+      res.sendFile(staticContentLocation + '/index.html');
     });
 
     // Add Analytics API

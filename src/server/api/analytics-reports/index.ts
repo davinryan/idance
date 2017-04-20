@@ -10,7 +10,7 @@ const cacheSuccesses = cache(config.get('CACHE_TIMEOUT') + ' hours', onlyStatus2
 const router = express.Router();
 const analytics = new AnalyticsReports();
 
-// Analytics API
+// Analytics API. TODO: update this to use Swagger 2.0
 router.get('/', cache(cacheSuccesses), async (req, res) => {
   if (req.query.type === 'noEntrancesPerSiteSource') {
     res.json(await analytics.getNoEntrancesPerSiteSource(req.query.startDate));

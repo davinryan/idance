@@ -114,7 +114,7 @@ const serverConfig = extend(true, {}, config, {
   },
   output: {
     path: path.resolve(__dirname, 'dist/server'),
-    filename: 'index.[hash].js'
+    filename: 'index.js'
   },
   externals: nodeModules,
   plugins: [

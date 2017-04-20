@@ -63,7 +63,7 @@ export const config: convict.Config = convict({
   STATIC_CONTENT_PATH: {
     doc: 'Root Path of client application',
     format: String,
-    default: path.join(__dirname, '../../../dist/public'),
+    default: '../../dist/public',
     env: 'STATIC_CONTENT_PATH'
   },
   PORT: {

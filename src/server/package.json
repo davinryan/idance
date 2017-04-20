@@ -4,7 +4,7 @@
   "description": "idance",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "STATIC_CONTENT_PATH=../public node server/index.js"
   },
   "repository": {
     "type": "git",
