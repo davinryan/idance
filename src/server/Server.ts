@@ -50,7 +50,6 @@ class Server {
 
     // Analytics Page
     const staticContentLocation = path.join(__dirname, config.get('STATIC_CONTENT_PATH'));
-    logger.info('################## ', staticContentLocation);
     router.use(config.get('REPORTS_CONTEXT_ROOT'), express.static(staticContentLocation));
 
     // Always return the main index.html, so react-router render the route in the client

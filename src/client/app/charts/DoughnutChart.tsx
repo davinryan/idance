@@ -24,8 +24,10 @@ class CustomChart extends React.Component<ICustomChart, any> {
         "labels": [],
         "datasets": [{
           "data": [],
-          "backgroundColor": ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#E67E22", "#959595", "#8E44AD", "#2ECC71", "#ECf0F1", "#34495E", "#ECF0F1", "#ECF0F1", "#ECF0F1", "#ECF0F1"],
-          "hoverBackgroundColor": ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#E67E22", "#959595", "#8E44AD", "#2ECC71", "#ECf0F1", "#34495E", "#ECF0F1", "#ECF0F1", "#ECF0F1", "#ECF0F1"]
+          "backgroundColor": ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#E67E22", "#959595", "#8E44AD", "#2ECC71",
+            "#ECf0F1", "#34495E", "#ECF0F1", "#ECF0F1", "#ECF0F1", "#ECF0F1"],
+          "hoverBackgroundColor": ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#E67E22", "#959595", "#8E44AD",
+            "#2ECC71", "#ECf0F1", "#34495E", "#ECF0F1", "#ECF0F1", "#ECF0F1", "#ECF0F1"]
         }]
       },
       options: this.props.options
