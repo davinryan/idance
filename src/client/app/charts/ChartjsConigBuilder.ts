@@ -1,17 +1,6 @@
 import * as R from 'ramda';
 
-const wrapInList = (obj) => {
-  return [obj];
-};
-const mapIndexed = R.addIndex(R.map);
-const getBaseColours = R.pipe(R.path(['data']), mapIndexed(ChartjsConigBuilder.getColourForIndex));
-const getBackgroundColours = R.pipe(getBaseColours, R.objOf('backgroundColor'));
-const addBackgroundColours = <any> R.converge(R.merge, [R.identity, getBackgroundColours]);
-const getHoverBackgroundColours = R.pipe(getBaseColours, R.objOf('hoverBackgroundColor'));
-const addHoverBackgroundColours = <any> R.converge(R.merge, [R.identity, getHoverBackgroundColours]);
-const getLabels = R.pipe(R.map(R.path(['label'])), R.objOf('labels'));
-const getData = R.pipe(R.map(R.path(['data'])), R.objOf('data'));
-const getDataSets = R.pipe(getData, addBackgroundColours, addHoverBackgroundColours, wrapInList, R.objOf('datasets'));
+
 
 interface IInputData {
   label: string,
@@ -34,6 +23,18 @@ class ChartjsConigBuilder {
     "#E74C3C"];
 
   public static buildChartDataConfigFromData(data: Array<IInputData>): any {
+    const wrapInList = (obj) => {
+      return [obj];
+    };
+    const mapIndexed = R.addIndex(R.map);
+    const getBaseColours = R.pipe(R.path(['data']), mapIndexed(ChartjsConigBuilder.getColourForIndex));
+    const getBackgroundColours = R.pipe(getBaseColours, R.objOf('backgroundColor'));
+    const addBackgroundColours = <any> R.converge(R.merge, [R.identity, getBackgroundColours]);
+    const getHoverBackgroundColours = R.pipe(getBaseColours, R.objOf('hoverBackgroundColor'));
+    const addHoverBackgroundColours = <any> R.converge(R.merge, [R.identity, getHoverBackgroundColours]);
+    const getLabels = R.pipe(R.map(R.path(['label'])), R.objOf('labels'));
+    const getData = R.pipe(R.map(R.path(['data'])), R.objOf('data'));
+    const getDataSets = R.pipe(getData, addBackgroundColours, addHoverBackgroundColours, wrapInList, R.objOf('datasets'));
     return R.pipe(<any> R.converge(R.merge, [getLabels, getDataSets]))(data);
   }
 
