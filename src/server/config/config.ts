@@ -1,5 +1,4 @@
 import * as convict from 'convict';
-import * as path from 'path';
 
 export const config: convict.Config = convict({
   NODE_ENV: {
@@ -60,11 +59,17 @@ export const config: convict.Config = convict({
     default: 'debug',
     env: 'LOG_LEVEL'
   },
-  STATIC_CONTENT_PATH: {
-    doc: 'Root Path of client application',
+  ADMIN_STATIC_CONTENT_PATH: {
+    doc: 'Root Path of admin application',
     format: String,
-    default: '../../dist/public',
-    env: 'STATIC_CONTENT_PATH'
+    default: '../../dist/admin',
+    env: 'ADMIN_STATIC_CONTENT_PATH'
+  },
+  MAIN_STATIC_CONTENT_PATH: {
+    doc: 'Root Path of main application',
+    format: String,
+    default: '../../dist/main',
+    env: 'MAIN_STATIC_CONTENT_PATH'
   },
   PORT: {
     doc: 'Default Path',
@@ -72,11 +77,17 @@ export const config: convict.Config = convict({
     default: 3000,
     env: 'PORT'
   },
-  REPORTS_CONTEXT_ROOT: {
-    doc: 'Context path for main reporting URL',
+  ADMIN_CONTEXT_ROOT: {
+    doc: 'Context path for main admin URL',
     format: String,
-    default: '/analytics-reports',
-    env: 'REPORTS_CONTEXT_ROOT'
+    default: '/admin',
+    env: 'ADMIN_CONTEXT_ROOT'
+  },
+  MAIN_CONTEXT_ROOT: {
+    doc: 'Context path for main admin URL',
+    format: String,
+    default: '/',
+    env: 'MAIN_CONTEXT_ROOT'
   }
 });
 

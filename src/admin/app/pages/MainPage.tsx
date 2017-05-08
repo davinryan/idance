@@ -50,7 +50,7 @@ class MainPage extends React.Component<IMainPage, any> {
   }
 
   render() {
-    document.title = 'MainPage';
+    document.title = 'AdminPage';
 
     const options = {
       responsive: true

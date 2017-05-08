@@ -83,17 +83,32 @@ const config = {
   }
 };
 
-const clientConfig = extend(true, {}, config, {
+const adminConfig = extend(true, {}, config, {
   target: 'web',
   entry: {
-    app: ['./src/client/app/index.tsx']
+    app: ['./src/admin/app/index.tsx']
   },
   output: {
-    path: path.resolve(__dirname, 'dist/public'),
+    path: path.resolve(__dirname, 'dist/admin'),
     filename: 'app/bundle.[hash].js'
   },
   plugins: [
-    new HtmlWebpackPlugin({template: './src/client/index.ejs'}),
+    new HtmlWebpackPlugin({template: './src/admin/index.ejs'}),
+    extractSass
+  ]
+});
+
+const mainConfig = extend(true, {}, config, {
+  target: 'web',
+  entry: {
+    app: ['./src/main/app/index.tsx']
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist/main'),
+    filename: 'app/bundle.[hash].js'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({template: './src/main/index.ejs'}),
     extractSass
   ]
 });
@@ -127,4 +142,4 @@ const serverConfig = extend(true, {}, config, {
   ]
 });
 
-module.exports = [clientConfig, serverConfig];
+module.exports = [mainConfig, adminConfig, serverConfig];

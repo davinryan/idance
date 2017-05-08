@@ -12,7 +12,7 @@ interface IRoutes {}
 class Routes extends React.Component<IRoutes, any> {
   render() {
     return (
-        <Route path="/analytics-reports" component={MainPage}/>
+        <Route path="/admin" component={MainPage}/>
     );
   }
 }

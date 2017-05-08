@@ -48,20 +48,27 @@ class Server {
     let router: express.Router;
     router = express.Router();
 
-    // Analytics Page
-    const staticContentLocation = path.join(__dirname, config.get('STATIC_CONTENT_PATH'));
-    router.use(config.get('REPORTS_CONTEXT_ROOT'), express.static(staticContentLocation));
+    // Add main application
+    this.addClientRoute(router, config.get('MAIN_STATIC_CONTENT_PATH'), config.get('MAIN_CONTEXT_ROOT'));
 
-    // Always return the main index.html, so react-router render the route in the client
-    router.get(staticContentLocation + '/*', (req, res) => {
-      res.sendFile(staticContentLocation + '/index.html');
-    });
+    // Add admin application
+    this.addClientRoute(router, config.get('ADMIN_STATIC_CONTENT_PATH'), config.get('ADMIN_CONTEXT_ROOT'));
 
     // Add Analytics API
     router.use('/v1/analytics-reports', analyticsReports);
 
     // use router middleware
     this.app.use(router);
+  }
+
+  private addClientRoute(router: express.Router, staticContentPath: string, contextRoot: string) {
+    const staticContentLocation = path.join(__dirname, staticContentPath);
+    router.use(contextRoot, express.static(staticContentLocation));
+
+    // Always return the main index.html, so react-router render can route the client
+    router.get(staticContentLocation + '/*', (req, res) => {
+      res.sendFile(staticContentLocation + '/index.html');
+    });
   }
 }
 
