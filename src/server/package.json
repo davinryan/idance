@@ -7,7 +7,7 @@
   "description": "idance",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "MAIN_STATIC_CONTENT_PATH=../main ADMIN_STATIC_CONTENT_PATH=../admin node server/index.js"
   },
   "repository": {
     "type": "git",

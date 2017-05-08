@@ -137,6 +137,10 @@ const serverConfig = extend(true, {}, config, {
       {
         from: 'src/server/package.json',
         to: '../'
+      },
+      {
+        from: './Procfile',
+        to: '../'
       }
     ])
   ]
