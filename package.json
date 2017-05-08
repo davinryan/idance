@@ -1,6 +1,9 @@
 {
   "name": "idance",
   "version": "0.0.0",
+  "engines": {
+    "node": "7.5.0"
+  },
   "description": "idance",
   "main": "server/index.js",
   "scripts": {
@@ -30,7 +33,6 @@
   },
   "devDependencies": {
     "@types/jest": "^19.2.2",
-    "bootstrap-sass": "^3.3.7",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "^2.1.0",
@@ -64,6 +66,7 @@
     "@types/winston": "^2.2.0",
     "apicache": "^0.8.4",
     "axios": "^0.16.1",
+    "bootstrap-sass": "^3.3.7",
     "chart.js": "^2.5.0",
     "convict": "^3.0.0",
     "express": "^4.15.2",
