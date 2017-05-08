@@ -44,9 +44,7 @@ class MainPage extends React.Component<IMainPage, any> {
       this.setState({mostPopularPage: result});
     });
 
-    this.setState({height: (window.innerHeight - 100) + 'px'}, () => {
-      console.log('height is ', this.state.height);
-    });
+    this.setState({height: (window.innerHeight - 100) + 'px'});
   }
 
   render() {
