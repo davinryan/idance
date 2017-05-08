@@ -1,0 +1,62 @@
+.content-block {
+
+    position: relative;
+    min-height: 180px;
+
+
+    section {
+        max-width: 1024px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    &:before {
+        content: "";
+        left: 0;
+        right: 0;
+
+        top: 0;
+        bottom: 0;
+
+        overflow: hidden;
+        pointer-events: none;
+        position: absolute;
+    }
+
+    &.skew:before {
+        transform: skewY(-12deg);
+    }
+
+    &.color-dark:before {
+        background-color: #396bf7;
+    }
+
+    &.color-dark {
+        color: #fff;
+    }
+
+    .header {
+        margin-bottom: 20px;
+        > i, > h3, > .wrapper {
+            display: inline-block;
+            margin: 0 10px;
+            float: left;
+        }
+
+        h3 {
+            font-size: 28px;
+        }
+    }
+
+
+    &.skew {
+        padding: 260px 0 230px 0;
+        margin-bottom: 203px;
+    }
+
+
+    & + .skew {
+        margin-top: 240px;
+    }
+
+}

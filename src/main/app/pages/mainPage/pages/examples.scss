@@ -1,0 +1,71 @@
+body.examples {
+
+  section {
+      max-width: none;
+      width: 100%;
+      margin: 10px auto 0;
+      //background-color: #ccc;
+
+      box-shadow: inset 0 2px 14px rgba(0, 0, 0, 0.25);
+
+  }
+
+  pre {
+    background: none !important;
+  }
+
+
+
+  section ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+  }
+
+
+  section li {
+      a {
+          padding: 20px;
+          cursor: pointer;
+          display: block;
+          text-decoration: none;
+      }
+
+      &:hover {
+        background-color: rgba(0,0,0,0.1);
+      }
+  }
+
+  .col-11 {
+      background-color: #f5f2f0;
+      box-shadow: inset 0 2px 14px rgba(0, 0, 0, 0.25);
+  }
+
+  section {
+      min-height: calc(100%);
+
+      li ~ li {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+      }
+  }
+
+
+  section > div {
+      margin: 0;
+      padding: 0;
+  }
+}
+
+
+body.example section {
+  min-height: calc(100%);
+
+  h1 {
+    margin-top: 50px;
+    margin-bottom: 10px;
+
+  }
+
+
+}

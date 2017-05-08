@@ -1,0 +1,40 @@
+#editor {
+  position: relative;
+  height: 196px;
+
+  background: #fff;
+  box-shadow: 0 0 4px rgba(0,0,0,0.10);
+  border-radius: 4px;
+
+  margin-top: 30px;
+}
+
+#editor > pre {
+  background: #fff;
+  padding: 0;
+}
+
+#editor .line-numbers {
+  position: absolute;
+  line-height: 1.5;
+}
+
+#editor .line-numbers > span {
+  display: block;
+  text-align: center;
+  width: 30px;
+  background-color: #f9f3d0;
+  padding: 2px;
+  color: #9a9999;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#editor code {
+  position: absolute;
+  left: 40px;
+  top: 0;
+}
