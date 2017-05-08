@@ -15,7 +15,7 @@ class MainPage extends React.Component<IMainPage, any> {
   }
 
   render() {
-    document.title = 'MainPage';
+    document.title = 'iDance Wellington';
 
     const options = {
       responsive: true
@@ -32,9 +32,9 @@ class MainPage extends React.Component<IMainPage, any> {
 
                 <div>
                   <a className="logo" href="/">
-                    <img src="/img/logo.png" width="29px"/>
-                    Bluefish
+                    <img src="http://classic.idance.co.nz/images/iDance-logo-1.png" width="100px"/>
                   </a>
+                  <p>Wellington</p>
                 </div>
 
                 <div>
@@ -46,39 +46,39 @@ class MainPage extends React.Component<IMainPage, any> {
                     </li>
 
                     <li>
-                      <a className="nav-link" href="/features">
-                        Features
+                      <a className="nav-link" href="/about">
+                        About
                       </a>
                     </li>
 
                     <li>
-                      <a className="nav-link" href="/examples">
-                        Examples
+                      <a className="nav-link" href="/classes">
+                        Classes
                       </a>
                     </li>
 
                     <li>
-                      <a className="nav-link" href="/docs/">
-                        Docs
+                      <a className="nav-link" href="/events">
+                        Events
                       </a>
                     </li>
 
                     <li>
-                      <a className="nav-link" href="/repo">
-                        Repo
+                      <a className="nav-link" href="/weddings">
+                        Weddings
                       </a>
                     </li>
 
                     <li>
-                      <a className="nav-link" href="/contactus">
-                        Contact Us
+                      <a className="nav-link" href="/crew">
+                        Crew
                       </a>
                     </li>
 
 
                     <li>
-                      <a className="nav-bt" href="/getting-started">
-                        Getting started
+                      <a className="nav-bt" href="/more">
+                        More
                       </a>
                     </li>
 
@@ -90,27 +90,22 @@ class MainPage extends React.Component<IMainPage, any> {
             <div className="container-lrg flex">
               <div className="col-6 centervertical">
                 <h1 className="heading">
-                  The first Content Framework!
+                  Modern Jive - the biggest partner dance on the planet
                 </h1>
                 <h2 className="paragraph">
-                  We're creating the best place to go when starting a new business or company. Create any content to the
-                  web, we support any kind, e-commerce, blog, cms, anything!
+                  Why spend your nights on the couch? Come join us and dance the night away! Modern Jive, Fun, Fit &amp;
+                  Easy!
+                  BUT it is not just a dance class, it is a whole night out. Be prepared to enjoy yourselves
                 </h2>
                 <div className="bt">
                   <a className="bt-button" href="/getting-started">
-                    Explore
+                    Get Started
                   </a>
                 </div>
               </div>
               <div className="col-6 sidedevices">
-                <div className="browserwrapper">
-                  <div className="browser">
-                    <div className="mask">
-                      <img className="mask-img"
-                           src="https://static.wixstatic.com/media/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.jpg/v1/fill/w_613,h_266,al_c,q_80,usm_0.66_1.00_0.01/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.webp"/>
-                    </div>
-                  </div>
-                </div>
+                <img className="mask-img"
+                     src="https://static.wixstatic.com/media/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.jpg/v1/fill/w_613,h_266,al_c,q_80,usm_0.66_1.00_0.01/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.webp"/>
               </div>
             </div>
           </header>
@@ -123,29 +118,28 @@ class MainPage extends React.Component<IMainPage, any> {
 
                 <div className="col-4">
                   <h3 className="subheading">
-                    API First
+                    Whole night out
                   </h3>
                   <p className="paragraph">
-                    Manage your content by just defining an API route and object, developer friendly baby!
+                    it is not just a dance class, it is a whole night out
                   </p>
                 </div>
 
                 <div className="col-4">
                   <h3 className="subheading">
-                    Build anything!
+                    Fun, Fit &amp; Easy!
                   </h3>
                   <p className="paragraph">
-                    It's too easy to get involved with Bluefish, define a scope of goal, apis, models and the DB is
-                    automatically manageable.
+                    Be prepared to enjoy yourselves
                   </p>
                 </div>
 
                 <div className="col-4">
                   <h3 className="subheading">
-                    Gorgeous Simplicity
+                    Teens!
                   </h3>
                   <p className="paragraph">
-                    If it's a website builder, CMS, Blog, whatever you want, easy to create any content
+                    NOW classes for TEENS CLASSES too!
                   </p>
                 </div>
 
@@ -163,33 +157,25 @@ class MainPage extends React.Component<IMainPage, any> {
 
             <span className="code icon">
                 <div className="bt">
-                  <a className="bt-button" href="/getting-started">
-                    Explore
+                  <a className="bt-button" href="/events">
+                    Events
                   </a>
                 </div>
             </span>
 
-                  <h3>DEVELOPERS FIRST</h3>
+                  <h3>Welcome to iDance</h3>
 
                   <p>
-                    Bluefish is a constantly involving platform, we are always
-                    trying to stay a head of your project needs.
-                    We are always asking for advice on how to make
-                    things better and greater!
+                    Classes every Wednesday and Thursday
+
+                    Whitireia Performance Centre
+                    25 Vivian Street, Wellington
+
+                    Beginners class 7pm
+                    $15 for a whole night out
+
+                    Have a look through our website to find all the information you need
                   </p>
-                </div>
-
-
-                <div id="editor">
-                  <div className="line-numbers">
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <span>6</span>
-                    <span>7</span>
-                  </div>
                 </div>
 
               </section>
@@ -205,7 +191,7 @@ class MainPage extends React.Component<IMainPage, any> {
               <section className="container-sml text-center">
                 <div className="col-12">
                   <h3 className="heading">
-                    Brilliant API control
+                    It's easy and fun
                   </h3>
                 </div>
               </section>
@@ -213,36 +199,42 @@ class MainPage extends React.Component<IMainPage, any> {
                 <div className="col-5 centervertical">
                   <div className="steps">
                     <div className="emoji">
-                      <i className="material-icons">lightbulb_outline</i>
+                      <span className="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
                     </div>
                     <h3 className="subheading">
-                      Instant Handles
+                      Start Now
                     </h3>
                     <p className="paragraph">
-                      instantly shows you the most relevant data.
+                      Learn to dance Modern Jive
+                      Have a great night out
+                      Make new friends
+                      It's easy and fun
+                      On your own or with friends
+                      No need to book
+                      Start anytime
+                      Two left feet, no problem
                     </p>
                   </div>
                   <div className="steps">
                     <div className="emoji">
-                      <i className="material-icons">favorite</i>
+                      <span className="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
                     </div>
                     <h3 className="subheading">
-                      Any Types
+                      Parties and Events
                     </h3>
                     <p className="paragraph">
-                      Doesn't matter what type of site you're going to create: Static site, CMS, Blog or a e-Commerce
-                      site, Bluefish can do it all.
+                      Keep up to date with all the dance parties and events throughout the year
                     </p>
                   </div>
                   <div className="steps">
                     <div className="emoji">
-                      <i className="material-icons">airplanemode_active</i>
+                      <span className="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
                     </div>
                     <h3 className="subheading">
-                      Insanely Fast
+                      Insanely Awesome
                     </h3>
                     <p className="paragraph">
-                      Built on top of Express you can push it as fast as you would with Express!
+                      DO IT TODAY AND MAKE LIFE AWESOME
                     </p>
                   </div>
                 </div>
@@ -250,14 +242,8 @@ class MainPage extends React.Component<IMainPage, any> {
                 </div>
                 <div className="col-6">
                   <div className="sidedevices">
-                    <div className="browserwrapper">
-                      <div className="browser">
-                        <div className="mask">
                           <img className="mask-img"
                                src="https://static.wixstatic.com/media/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.jpg/v1/fill/w_613,h_266,al_c,q_80,usm_0.66_1.00_0.01/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.webp"/>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </section>
@@ -269,7 +255,7 @@ class MainPage extends React.Component<IMainPage, any> {
             <div className="container-sml flex text-center">
               <div className="col-12">
                 <h3 className="heading">
-                  Don't waste time, create something new today with Bluefish
+                  Don't waste time, come along to iDance
                 </h3>
                 <div className="bt">
                   <a className="bt-button" href="/getting-started">
@@ -281,10 +267,10 @@ class MainPage extends React.Component<IMainPage, any> {
             <div className="container-lrg footer-nav flex">
               <div className="col-3 vertical">
                 <a className="logo" href="/">
-                  Bluefish
+                  <img src="http://classic.idance.co.nz/images/iDance-logo-1.png" width="100px"/>
                 </a>
                 <a className="nav-link2">
-                  &copy; 2017 Solnet Solutions
+                  &copy; 2017 iDance Digital Team
                 </a>
               </div>
               <div className="col-3 vertical">
@@ -292,26 +278,29 @@ class MainPage extends React.Component<IMainPage, any> {
                   Home
                 </a>
                 <a className="nav-link2" href="/features">
-                  Features
+                  About
                 </a>
                 <a className="nav-link2" href="/getting-started">
-                  Getting started
+                  Classes
                 </a>
               </div>
               <div className="col-3 vertical">
                 <a className="nav-link2" href="/docs">
-                  Documentation
+                  Events
                 </a>
                 <a className="nav-link2" href="/repo">
-                  Repo
+                  Wedding
                 </a>
-
+                <a className="nav-link2" href="/repo">
+                  Crew
+                </a>
               </div>
               <div className="col-3 vertical">
                 <div className="nav-link2 credits">
-                  <i className="material-icons">favorite</i>
+                  <span className="glyphicon glyphicon-heart" aria-hidden="true"></span>
                   <div>
-                    <small>Made with Love by Ryan Clough at Solnet!</small>
+                    <small>Made by Davin Ryan</small>
+                    <small>Digital Team</small>
                     <small>Wellington, New Zealand</small>
                   </div>
                 </div>

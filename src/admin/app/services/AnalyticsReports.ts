@@ -62,7 +62,7 @@ export default class AnalyticsReports {
       timeout: config.get('SERVICE_TIMEOUT'),
       params: {
         type: reportType,
-        startDate: '60daysAgo'
+        startDate: '30daysAgo'
       },
       responseType: 'json'
     }).catch((error) => {

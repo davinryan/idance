@@ -56,9 +56,9 @@ class MainPage extends React.Component<IMainPage, any> {
 
     return (
         <div className="mainPage">
-          <button className="btn btn-default">Click me!</button>
           <div className="header">
             <label className="title">Analytics Reports for www.idance.co.nz</label>
+            <label className="subtitle">Data for last 30 days</label>
           </div>
 
           <div className="twoChartColumns">

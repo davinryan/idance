@@ -1,12 +1,22 @@
 .mainPage {
   .header {
     .title {
+      display: block;
       font-size: 24pt;
       font-weight: bold;
+      text-align: center;
+    }
+
+    .subtitle {
+      display: block;
+      font-size: 18pt;
+      font-weight: bold;
+      text-align: center;
     }
   }
   .twoChartColumns {
     display: flex;
+    padding: 0px 20px 0px 20px;
 
     .chartColumn {
       align-self: flex-start;

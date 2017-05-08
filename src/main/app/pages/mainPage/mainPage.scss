@@ -114,10 +114,21 @@ body.contact-us {
 }
 
 .subheading {
+  display: inline-block;
   font-size: 30px;
   line-height: 40px;
   font-weight: 500;
   text-align: center;
+}
+
+.emoji {
+  display: inline-block;
+  margin-right: 20px;
+
+  span.glyphicon {
+    font-size: 1.5em;
+  }
+
 }
 
 @media (max-width: 900px) {
