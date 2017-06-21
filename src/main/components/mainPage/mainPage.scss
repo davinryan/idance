@@ -1,3 +1,16 @@
+//@import "buttons/index";
+//@import "device/index";
+//@import "grid/index";
+//@import "content-block/index";
+//@import "icons/index";
+//@import "footer/index";
+//@import "editor/index";
+
+//custom pages
+//@import "pages/features";
+//@import "pages/home";
+//@import "pages/getting-started";
+//@import "pages/examples";
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
 * {
@@ -26,22 +39,6 @@ body, html {
 p {
   line-height: 1.5em;
 }
-
-@import "buttons/index";
-@import "device/index";
-@import "grid/index";
-@import "header/index";
-@import "stripes/index";
-@import "content-block/index";
-@import "icons/index";
-@import "footer/index";
-@import "editor/index";
-
-//custom pages
-@import "pages/features";
-@import "pages/home";
-@import "pages/getting-started";
-@import "pages/examples";
 
 .centerText {
   text-align: center;

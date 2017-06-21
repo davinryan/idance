@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 
 // Import Bootstrap CSS
-require('../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss');
+require('../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss');
 
 ReactDOM.render(
     <Router history={browserHistory}>

@@ -14,12 +14,12 @@ const fs = require('fs');
 
 const nodeModules = {};
 fs.readdirSync('node_modules')
-    .filter(function (module) {
-      return ['.bin'].indexOf(module) === -1;
-    })
-    .forEach(function (module) {
-      nodeModules[module] = 'commonjs ' + module;
-    });
+  .filter(function (module) {
+    return ['.bin'].indexOf(module) === -1;
+  })
+  .forEach(function (module) {
+    nodeModules[module] = 'commonjs ' + module;
+  });
 
 const config = {
   devtool: isProduction ? 'eval' : 'source-map',
@@ -48,33 +48,36 @@ const config = {
           }, {
             loader: "sass-loader"
           }],
-          // use style-loader in development
           fallback: "style-loader"
         })
       },
       {
         test: /\.png$/,
-        loader: "url-loader?limit=100000"
+        loader: 'url-loader?limit=100000&name=assets/images/[name].[ext]'
+      },
+      {
+        test: /\.gif/,
+        loader: 'url-loader?limit=100000&name=assets/images/[name].[ext]'
       },
       {
         test: /\.jpg$/,
-        loader: "file-loader"
+        loader: 'file-loader?name=assets/images/[name].[ext]'
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff&name=assets/fonts/[name].[ext]'
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
+        loader: 'url-loader?limit=10000&mimetype=application/octet-stream&name=assets/fonts/[name].[ext]'
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file-loader'
+        loader: 'file-loader?name=assets/fonts/[name].[ext]'
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml&name=assets/images/[name].[ext]'
       }
     ]
   },
@@ -90,7 +93,7 @@ const adminConfig = extend(true, {}, config, {
   },
   output: {
     path: path.resolve(__dirname, 'dist/admin'),
-    filename: 'app/bundle.[hash].js'
+    filename: 'bundle.[hash].js'
   },
   plugins: [
     new HtmlWebpackPlugin({template: 'src/admin/index.ejs'}),
@@ -107,11 +110,11 @@ const adminConfig = extend(true, {}, config, {
 const mainConfig = extend(true, {}, config, {
   target: 'web',
   entry: {
-    app: ['./src/main/app/index.tsx']
+    app: ['./src/main/index.tsx']
   },
   output: {
     path: path.resolve(__dirname, 'dist/main'),
-    filename: 'app/bundle.[hash].js'
+    filename: 'bundle.[hash].js'
   },
   plugins: [
     new HtmlWebpackPlugin({template: 'src/main/index.ejs'}),

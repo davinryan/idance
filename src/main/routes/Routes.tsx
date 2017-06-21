@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Route
 } from 'react-router-dom';
-import MainPage from '../pages/mainPage/MainPage';
+import MainPage from '../components/mainPage/MainPage';
 
 /**
  * Default routes for this application.
