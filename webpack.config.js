@@ -51,6 +51,11 @@ const config = {
           fallback: "style-loader"
         })
       },
+      // Required for bootstraps third party dependencies
+      {
+        test: /(.*)node_modules(.*)(bootstrap|jquery)(.*)\.js/,
+        loader: 'file-loader?name=assets/js/[name].[ext]'
+      },
       {
         test: /\.png$/,
         loader: 'url-loader?limit=100000&name=assets/images/[name].[ext]'

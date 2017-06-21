@@ -1,66 +1,91 @@
 import * as React from 'react';
-
 require('./header.scss');
+require('../../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap/collapse.js');
+require('../../../../node_modules/jquery/dist/jquery.js');
 class Header extends React.Component<{}, any> {
   public render() {
     return (
       <header className='header'>
         <div id='stripes'></div>
-        <nav>
-          <div className='col-12'>
 
-            <div>
-              <a className='logo' href='/'>
-              </a>
+        <nav className='navbar navbar-default'>
+          <div className='container-fluid'>
+            {/*<!-- Brand and toggle get grouped for better mobile display -->*/}
+            <div className='navbar-header'>
+              <button type='button' className='navbar-toggle collapsed' data-toggle='collapse'
+                      data-target='#bs-example-navbar-collapse-1' aria-expanded='false'>
+                <span className='sr-only'>Toggle navigation</span>
+                <span className='icon-bar'></span>
+                <span className='icon-bar'></span>
+                <span className='icon-bar'></span>
+              </button>
+              <a className='navbar-brand' href='#'>Brand</a>
             </div>
 
-            <div>
-              <ul>
-                <li>
-                  <a className='nav-link' href='/'>
-                    Home
-                  </a>
-                </li>
-
-                <li>
-                  <a className='nav-link' href='/about'>
-                    About
-                  </a>
-                </li>
-
-                <li>
-                  <a className='nav-link' href='/classes'>
-                    Classes
-                  </a>
-                </li>
-
-                <li>
-                  <a className='nav-link' href='/events'>
-                    Events
-                  </a>
-                </li>
-
-                <li>
-                  <a className='nav-link' href='/weddings'>
-                    Weddings
-                  </a>
-                </li>
-
-                <li>
-                  <a className='nav-link' href='/crew'>
-                    Crew
-                  </a>
-                </li>
-                <li>
-                  <a className='nav-bt' href='/more'>
-                    More
-                  </a>
-                </li>
-
+            {/*<!-- Collect the nav links, forms, and other content for toggling -->*/}
+            <div className='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+              <ul className='nav navbar-nav'>
+                <li className='active'><a href='#'>Link <span className='sr-only'>(current)</span></a></li>
+                <li><a href='#'>Link</a></li>
+                <li><a href='#'>Link</a></li>
               </ul>
             </div>
           </div>
         </nav>
+        
+        {/*<div className='nav-bar'>*/}
+        
+          {/*<div>*/}
+            {/*<a className='logo' href='/'></a>*/}
+          {/*</div>*/}
+        
+          {/*<div>*/}
+            {/*<ul>*/}
+              {/*<li>*/}
+                {/*<a className='nav-link' href='/'>*/}
+                  {/*Home*/}
+                {/*</a>*/}
+              {/*</li>*/}
+        
+              {/*<li>*/}
+                {/*<a className='nav-link' href='/about'>*/}
+                  {/*About*/}
+                {/*</a>*/}
+              {/*</li>*/}
+        
+              {/*<li>*/}
+                {/*<a className='nav-link' href='/classes'>*/}
+                  {/*Classes*/}
+                {/*</a>*/}
+              {/*</li>*/}
+        
+              {/*<li>*/}
+                {/*<a className='nav-link' href='/events'>*/}
+                  {/*Events*/}
+                {/*</a>*/}
+              {/*</li>*/}
+        
+              {/*<li>*/}
+                {/*<a className='nav-link' href='/weddings'>*/}
+                  {/*Weddings*/}
+                {/*</a>*/}
+              {/*</li>*/}
+        
+              {/*<li>*/}
+                {/*<a className='nav-link' href='/crew'>*/}
+                  {/*Crew*/}
+                {/*</a>*/}
+              {/*</li>*/}
+              {/*<li>*/}
+                {/*<a className='nav-bt' href='/more'>*/}
+                  {/*More*/}
+                {/*</a>*/}
+              {/*</li>*/}
+        
+            {/*</ul>*/}
+          {/*</div>*/}
+        {/*</div>*/}
+
         <div className='container-lrg flex'>
           <div className='col-6 centervertical'>
             <h1 className='heading'>
