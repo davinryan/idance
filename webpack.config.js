@@ -9,8 +9,8 @@ const extend = require('extend');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProduction = nodeEnv === 'production';
 
-var webpack = require('webpack');
-var fs = require('fs');
+const webpack = require('webpack');
+const fs = require('fs');
 
 const nodeModules = {};
 fs.readdirSync('node_modules')
@@ -93,8 +93,14 @@ const adminConfig = extend(true, {}, config, {
     filename: 'app/bundle.[hash].js'
   },
   plugins: [
-    new HtmlWebpackPlugin({template: './src/admin/index.ejs'}),
-    extractSass
+    new HtmlWebpackPlugin({template: 'src/admin/index.ejs'}),
+    extractSass,
+    new CopyWebpackPlugin([
+      {
+        from: 'src/admin/favicon.ico',
+        to: '.'
+      }
+    ])
   ]
 });
 
@@ -108,8 +114,14 @@ const mainConfig = extend(true, {}, config, {
     filename: 'app/bundle.[hash].js'
   },
   plugins: [
-    new HtmlWebpackPlugin({template: './src/main/index.ejs'}),
-    extractSass
+    new HtmlWebpackPlugin({template: 'src/main/index.ejs'}),
+    extractSass,
+    new CopyWebpackPlugin([
+      {
+        from: 'src/admin/favicon.ico',
+        to: '.'
+      }
+    ])
   ]
 });
 
@@ -136,11 +148,11 @@ const serverConfig = extend(true, {}, config, {
     new CopyWebpackPlugin([
       {
         from: 'src/server/package.json',
-        to: '../'
+        to: '..'
       },
       {
-        from: './Procfile',
-        to: '../'
+        from: 'Procfile',
+        to: '..'
       }
     ])
   ]

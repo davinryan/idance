@@ -24,7 +24,7 @@ class MainPage extends React.Component<IMainPage, any> {
     };
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     analyticsReportsService.getNoEntrancesPerSiteSource().then((result) => {
       this.setState({noEntrancesPerSiteSource: result});
     });
@@ -47,7 +47,7 @@ class MainPage extends React.Component<IMainPage, any> {
     this.setState({height: (window.innerHeight - 100) + 'px'});
   }
 
-  render() {
+  public render() {
     document.title = 'AdminPage';
 
     const options = {
@@ -55,50 +55,50 @@ class MainPage extends React.Component<IMainPage, any> {
     };
 
     return (
-        <div className="mainPage">
-          <div className="header">
-            <label className="title">Analytics Reports for www.idance.co.nz</label>
-            <label className="subtitle">Data for last 30 days</label>
+        <div className='mainPage'>
+          <div className='header'>
+            <label className='title'>Analytics Reports for www.idance.co.nz</label>
+            <label className='subtitle'>Data for last 30 days</label>
           </div>
 
-          <div className="twoChartColumns">
-            <div className="chartColumn">
+          <div className='twoChartColumns'>
+            <div className='chartColumn'>
               {/*noEntrancesPerSiteSource*/}
-              <div className="donughtChart">
-                <label className="chartHeader">How are people getting to my site?</label>
-                <DoughnutChart clazz="chart" data={this.state.noEntrancesPerSiteSource} options={options}/>
+              <div className='donughtChart'>
+                <label className='chartHeader'>How are people getting to my site?</label>
+                <DoughnutChart clazz='chart' data={this.state.noEntrancesPerSiteSource} options={options}/>
               </div>
 
               {/*mostPopularExitPage*/}
-              <div className="donughtChart">
-                <label className="chartHeader">What page do people leave my site from?</label>
-                <DoughnutChart clazz="chart" data={this.state.mostPopularExitPage} options={options}/>
+              <div className='donughtChart'>
+                <label className='chartHeader'>What page do people leave my site from?</label>
+                <DoughnutChart clazz='chart' data={this.state.mostPopularExitPage} options={options}/>
               </div>
 
               {/*mostPopularPage*/}
-              <div className="donughtChart">
-                <label className="chartHeader">What page do people use the most?</label>
-                <DoughnutChart clazz="chart" data={this.state.mostPopularPage} options={options}/>
+              <div className='donughtChart'>
+                <label className='chartHeader'>What page do people use the most?</label>
+                <DoughnutChart clazz='chart' data={this.state.mostPopularPage} options={options}/>
               </div>
             </div>
 
-            <div className="chartColumn">
+            <div className='chartColumn'>
               {/*mostPopularDeviceByCategory*/}
-              <div className="donughtChart">
-                <label className="chartHeader">Are my users desktop or mobile users?</label>
-                <DoughnutChart clazz="chart" data={this.state.mostPopularDeviceByCategory} options={options}/>
+              <div className='donughtChart'>
+                <label className='chartHeader'>Are my users desktop or mobile users?</label>
+                <DoughnutChart clazz='chart' data={this.state.mostPopularDeviceByCategory} options={options}/>
               </div>
 
               {/*mostPopularDeviceByDeviceType*/}
-              <div className="donughtChart">
-                <label className="chartHeader">What device do people use to get to my site?</label>
-                <DoughnutChart clazz="chart" data={this.state.mostPopularDeviceByDeviceType} options={options}/>
+              <div className='donughtChart'>
+                <label className='chartHeader'>What device do people use to get to my site?</label>
+                <DoughnutChart clazz='chart' data={this.state.mostPopularDeviceByDeviceType} options={options}/>
               </div>
 
               {/*mostPopularBrowser*/}
-              <div className="donughtChart">
-                <label className="chartHeader">What browser do people use to get to my site?</label>
-                <DoughnutChart clazz="chart" data={this.state.mostPopularBrowser} options={options}/>
+              <div className='donughtChart'>
+                <label className='chartHeader'>What browser do people use to get to my site?</label>
+                <DoughnutChart clazz='chart' data={this.state.mostPopularBrowser} options={options}/>
               </div>
             </div>
           </div>

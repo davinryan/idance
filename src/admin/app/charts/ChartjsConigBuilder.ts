@@ -1,26 +1,11 @@
 import * as R from 'ramda';
 
-
-
 interface IInputData {
-  label: string,
-  data: number
+  label: string;
+  data: number;
 }
 
 class ChartjsConigBuilder {
-
-  private static NICE_COLOURS = [
-    '#FF6384',
-    '#36A2EB',
-    '#FFCE56',
-    '#4BC0C0',
-    '#E67E22',
-    '#959595',
-    '#8E44AD',
-    '#2ECC71',
-    '#ECf0F1',
-    '#34495E',
-    '#E74C3C'];
 
   public static buildChartDataConfigFromData(data: IInputData[]): any {
     const wrapInList = (obj) => {
@@ -38,6 +23,19 @@ class ChartjsConigBuilder {
       R.objOf('datasets'));
     return R.pipe(R.converge(R.merge, [getLabels, getDataSets]) as any)(data);
   }
+
+  private static NICE_COLOURS = [
+    '#FF6384',
+    '#36A2EB',
+    '#FFCE56',
+    '#4BC0C0',
+    '#E67E22',
+    '#959595',
+    '#8E44AD',
+    '#2ECC71',
+    '#ECf0F1',
+    '#34495E',
+    '#E74C3C'];
 
   private static getColourForIndex(value: any, index: number): string {
 

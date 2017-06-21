@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Routes from './routes/Routes';
 import {
@@ -6,10 +6,10 @@ import {
   browserHistory,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 // Import Bootstrap CSS
-require("../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss");
+require('../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss');
 
 ReactDOM.render(
     <Router history={browserHistory}>

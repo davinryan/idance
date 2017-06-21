@@ -12,41 +12,41 @@ export default class AnalyticsReports {
   public getMostPopularPage = R.memoize(this._getMostPopularPage);
 
   private async _getNoEntrancesPerSiteSource(): Promise<any> {
-    let result = await this.callAnalyticsReportsService('noEntrancesPerSiteSource');
+    const result = await this.callAnalyticsReportsService('noEntrancesPerSiteSource');
     return this.convertResponseToChartDataFormat(['sourceMedium'], ['entrances', 'values'], result.data);
   }
 
   private async _getMostPopularDeviceByCategory(): Promise<any> {
-    let result = await this.callAnalyticsReportsService('mostPopularDeviceByCategory');
+    const result = await this.callAnalyticsReportsService('mostPopularDeviceByCategory');
     return this.convertResponseToChartDataFormat(['deviceCategory'], ['pageviews', 'values'], result.data);
   }
 
   private async _getMostPopularDeviceByDeviceType(): Promise<any> {
-    let result = await this.callAnalyticsReportsService('mostPopularDeviceByDeviceType');
+    const result = await this.callAnalyticsReportsService('mostPopularDeviceByDeviceType');
     return this.convertResponseToChartDataFormat(['mobileDeviceInfo'], ['pageviews', 'values'], result.data);
   }
 
   private async _getMostPopularBrowser(): Promise<any> {
-    let result = await this.callAnalyticsReportsService('mostPopularBrowser');
+    const result = await this.callAnalyticsReportsService('mostPopularBrowser');
     return this.convertResponseToChartDataFormat(['browser'], ['pageviews', 'values'], result.data);
   }
 
   private async _getMostPopularExitPage(): Promise<any> {
-    let result = await this.callAnalyticsReportsService('mostPopularExitPage');
+    const result = await this.callAnalyticsReportsService('mostPopularExitPage');
     return this.convertResponseToChartDataFormat(['exitPagePath'], ['pageviews', 'values'], result.data);
 
   }
 
   private async _getMostPopularPage(): Promise<any> {
-    let result = await this.callAnalyticsReportsService('mostPopularPage');
+    const result = await this.callAnalyticsReportsService('mostPopularPage');
     return this.convertResponseToChartDataFormat(['pagePath'], ['pageviews', 'values'], result.data);
 
   }
 
-  private convertResponseToChartDataFormat(labelPath: Array<string>, dataPath: Array<string>, data: Array<any>) {
+  private convertResponseToChartDataFormat(labelPath: string[], dataPath: string[], data: any[]) {
     const getLabel = R.pipe(R.path(labelPath), R.objOf('label'));
     const getData = R.pipe(R.path(dataPath), R.head, parseInt, R.objOf('data'));
-    const processSingleDataResult = R.pipe(<any> R.converge(R.merge, [getLabel, getData]));
+    const processSingleDataResult = R.pipe(R.converge(R.merge, [getLabel, getData]) as any);
     return R.map(processSingleDataResult)(data);
   }
 

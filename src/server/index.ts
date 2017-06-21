@@ -1,2 +1,2 @@
 import Server from './Server';
-new Server();
+const server = new Server();

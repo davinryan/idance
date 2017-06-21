@@ -4,9 +4,9 @@ import ReactInstance = React.ReactInstance;
 import ChartjsConfigBuilder from './ChartjsConigBuilder';
 
 interface ICustomChart {
-  data: any,
-  options: any,
-  clazz?: string
+  data: any;
+  options: any;
+  clazz?: string;
 }
 
 class CustomChart extends React.Component<ICustomChart, any> {
