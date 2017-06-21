@@ -1,7 +1,9 @@
 import * as React from 'react';
 require('./header.scss');
-require('../../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap/collapse.js');
+
+// Required for bootstraps third party dependencies
 require('../../../../node_modules/jquery/dist/jquery.js');
+require('../../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap/collapse.js');
 class Header extends React.Component<{}, any> {
   public render() {
     return (
