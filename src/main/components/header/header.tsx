@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {Sticky, StickyContainer} from 'react-sticky';
 require('./header.scss');
 
 // Required for bootstraps third party dependencies
@@ -38,9 +37,6 @@ class Header extends React.Component<{}, any> {
         </nav>
 
         <div className='navbar-desktop'>
-          <div>
-            <a className='logo' href='/'></a>
-          </div>
           <div>
             <ul>
               <li>

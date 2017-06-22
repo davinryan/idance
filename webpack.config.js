@@ -126,7 +126,7 @@ const mainConfig = extend(true, {}, config, {
     extractSass,
     new CopyWebpackPlugin([
       {
-        from: 'src/admin/favicon.ico',
+        from: 'src/main/favicon.ico',
         to: '.'
       }
     ])
