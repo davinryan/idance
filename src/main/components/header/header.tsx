@@ -1,16 +1,16 @@
 import * as React from 'react';
+import {Sticky, StickyContainer} from 'react-sticky';
 require('./header.scss');
 
 // Required for bootstraps third party dependencies
 require('../../../../node_modules/jquery/dist/jquery.js');
-require('../../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap/collapse.js');
+require('../../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.js');
 class Header extends React.Component<{}, any> {
   public render() {
     return (
       <header className='header'>
-        <div id='stripes'></div>
-
-        <nav className='navbar navbar-default'>
+        <div className='stripes'></div>
+        <nav className='navbar navbar-default navbar-fixed-top'>
           <div className='container-fluid'>
             {/*<!-- Brand and toggle get grouped for better mobile display -->*/}
             <div className='navbar-header'>
@@ -21,72 +21,71 @@ class Header extends React.Component<{}, any> {
                 <span className='icon-bar'></span>
                 <span className='icon-bar'></span>
               </button>
-              <a className='navbar-brand' href='#'>Brand</a>
+              <a className='navbar-brand' href='#'><span className='logo' href='/'></span></a>
             </div>
 
             {/*<!-- Collect the nav links, forms, and other content for toggling -->*/}
             <div className='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
-              <ul className='nav navbar-nav'>
+              <ul className='nav navbar-collapse'>
                 <li className='active'><a href='#'>Link <span className='sr-only'>(current)</span></a></li>
                 <li><a href='#'>Link</a></li>
+              </ul>
+              <ul className='nav navbar-nav navbar-right'>
                 <li><a href='#'>Link</a></li>
               </ul>
             </div>
           </div>
         </nav>
-        
-        {/*<div className='nav-bar'>*/}
-        
-          {/*<div>*/}
-            {/*<a className='logo' href='/'></a>*/}
-          {/*</div>*/}
-        
-          {/*<div>*/}
-            {/*<ul>*/}
-              {/*<li>*/}
-                {/*<a className='nav-link' href='/'>*/}
-                  {/*Home*/}
-                {/*</a>*/}
-              {/*</li>*/}
-        
-              {/*<li>*/}
-                {/*<a className='nav-link' href='/about'>*/}
-                  {/*About*/}
-                {/*</a>*/}
-              {/*</li>*/}
-        
-              {/*<li>*/}
-                {/*<a className='nav-link' href='/classes'>*/}
-                  {/*Classes*/}
-                {/*</a>*/}
-              {/*</li>*/}
-        
-              {/*<li>*/}
-                {/*<a className='nav-link' href='/events'>*/}
-                  {/*Events*/}
-                {/*</a>*/}
-              {/*</li>*/}
-        
-              {/*<li>*/}
-                {/*<a className='nav-link' href='/weddings'>*/}
-                  {/*Weddings*/}
-                {/*</a>*/}
-              {/*</li>*/}
-        
-              {/*<li>*/}
-                {/*<a className='nav-link' href='/crew'>*/}
-                  {/*Crew*/}
-                {/*</a>*/}
-              {/*</li>*/}
-              {/*<li>*/}
-                {/*<a className='nav-bt' href='/more'>*/}
-                  {/*More*/}
-                {/*</a>*/}
-              {/*</li>*/}
-        
-            {/*</ul>*/}
-          {/*</div>*/}
-        {/*</div>*/}
+
+        <div className='navbar-desktop'>
+          <div>
+            <a className='logo' href='/'></a>
+          </div>
+          <div>
+            <ul>
+              <li>
+                <a className='nav-link' href='/'>
+                  Home
+                </a>
+              </li>
+
+              <li>
+                <a className='nav-link' href='/about'>
+                  About
+                </a>
+              </li>
+
+              <li>
+                <a className='nav-link' href='/classNamees'>
+                  classNamees
+                </a>
+              </li>
+
+              <li>
+                <a className='nav-link' href='/events'>
+                  Events
+                </a>
+              </li>
+
+              <li>
+                <a className='nav-link' href='/weddings'>
+                  Weddings
+                </a>
+              </li>
+
+              <li>
+                <a className='nav-link' href='/crew'>
+                  Crew
+                </a>
+              </li>
+              <li>
+                <a className='nav-bt' href='/more'>
+                  More
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
         <div className='container-lrg flex'>
           <div className='col-6 centervertical'>
@@ -96,7 +95,7 @@ class Header extends React.Component<{}, any> {
             <h2 className='paragraph'>
               Why spend your nights on the couch? Come join us and dance the night away! Modern Jive, Fun, Fit &amp;
               Easy!
-              BUT it is not just a dance class, it is a whole night out. Be prepared to enjoy yourselves
+              BUT it is not just a dance className, it is a whole night out. Be prepared to enjoy yourselves
             </h2>
             <div className='bt'>
               <a className='bt-button' href='/getting-started'>
