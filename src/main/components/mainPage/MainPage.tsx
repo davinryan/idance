@@ -207,8 +207,8 @@ class MainPage extends React.Component<IMainPage, any> {
                 <div className='nav-link2 credits'>
                   <span className='glyphicon glyphicon-heart' aria-hidden='true'></span>
                   <div>
-                    <small>Made by Davin Ryan</small>
-                    <small>Digital Team</small>
+                    <small>Made by the </small>
+                    <small>Digital Team </small>
                     <small>Wellington, New Zealand</small>
                   </div>
                 </div>

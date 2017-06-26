@@ -51,13 +51,13 @@ class Header extends React.Component<{}, any> {
           {/*<!-- Collect the nav links, forms, and other content for toggling -->*/}
           <div className='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
             <ul className='nav navbar-collapse'>
-              <li><a href='#'>Home</a></li>
-              <li><a href='#'>About</a></li>
-              <li><a href='#'>Classes</a></li>
-              <li><a href='#'>Events</a></li>
-              <li><a href='#'>Weddings</a></li>
-              <li><a href='#'>Crew</a></li>
-              <li><a href='#'>More</a></li>
+              <li><a href='#' className='nav-link'>Home</a></li>
+              <li><a href='#' className='nav-link'>About</a></li>
+              <li><a href='#' className='nav-link'>Classes</a></li>
+              <li><a href='#' className='nav-link'>Events</a></li>
+              <li><a href='#' className='nav-link'>Weddings</a></li>
+              <li><a href='#' className='nav-link'>Crew</a></li>
+              <li><a href='#' className='nav-link'>More</a></li>
             </ul>
           </div>
         </div>
@@ -136,7 +136,7 @@ class Header extends React.Component<{}, any> {
           </div>
         </div>
         <div className='col-6 sidedevices'>
-          <img className='mask-img'
+          <img className='mask-img main-image'
                src='https://static.wixstatic.com/media/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.jpg/v1/fill/w_613,h_266,al_c,q_80,usm_0.66_1.00_0.01/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.webp'/>
         </div>
       </div>

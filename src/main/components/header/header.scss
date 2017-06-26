@@ -2,8 +2,33 @@ $bootstrap-sass-asset-helper: true;
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 header > .container-lrg {
-  margin: 90px auto 230px;
+  margin: 90px auto 30px;
   position: relative;
+  display: flex;
+
+  .centervertical {
+    width: 90%;
+    margin: auto;
+    margin-top: -30px;
+
+    @media all and (min-width: $screen-sm) {
+      margin-top: -135px;
+    }
+
+    .bt {
+      margin-bottom: 30px;
+    }
+  }
+
+  .sidedevices {
+    width: 90%;
+    margin: auto;
+
+    .main-image {
+      width: 100%;
+    }
+  }
+
 }
 
 .text-center {
@@ -56,11 +81,16 @@ header > .container-lrg {
 }
 
 .navbar {
+
+  .nav-link {
+    color: #2e6da4;
+  }
+
   .navbar-collapse {
     a {
-        font-weight: bold;
-        font-size: 15pt;
-      }
+      font-weight: bold;
+      font-size: 15pt;
+    }
   }
   .navbar-header {
 
@@ -129,7 +159,7 @@ header > .container-lrg {
 
 @media all and (min-width: $screen-sm) {
   .logo {
-    width: 200px;
+    width: 260px;
   }
 }
 

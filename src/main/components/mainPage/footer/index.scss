@@ -1,22 +1,36 @@
 footer {
-  padding: 90px 0 45px;
+  padding: 20px 0 45px;
+
+  h3 {
+    color: #ffffff;
+  }
+
+  a {
+    color: #ffffff;
+  }
+
+  .footer-nav {
+    padding-top: 90px;
+    flex-wrap: wrap;
+  }
+  .nav-link2 {
+    display: inline-block;
+    margin: 0 10px;
+
+    :hover {
+      color: #2e6da4;
+    }
+  }
+
+  small {
+    color: #ffffff;
+  }
 }
-
-footer .footer-nav {
-  padding-top: 90px;
-  flex-wrap: wrap;
-}
-
-footer .nav-link {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-
 
 .credits {
   font-size: 12px;
   line-height: 16px;
+  color: #ffffff;
 }
 
 .credits > i {
@@ -31,6 +45,7 @@ footer .nav-link {
 
 footer {
   background-color: #4c4c4c;
+  //background: linear-gradient(150deg, #000000 30%, #4c4c4c 66%, #ffffff 100%);
 }
 
 footer a.logo {
