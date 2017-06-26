@@ -51,20 +51,32 @@ header > .container-lrg {
  * Navigation
  */
 
-.navbar {
-  opacity: 0.2;
+.navbar-opaque {
+  opacity: 0.8;
+}
 
+.navbar {
+  .navbar-collapse {
+    a {
+        font-weight: bold;
+        font-size: 15pt;
+      }
+  }
   .navbar-header {
 
     .navbar-toggle {
       opacity: 1;
-      border-color: black;
+      border: 2px solid black;
 
       .icon-bar {
         background-color: black;
       }
     }
   }
+}
+
+.navbar-desktop {
+  display: none;
 }
 
 @media all and (min-width: $screen-sm) {
@@ -131,7 +143,8 @@ header > .container-lrg {
   transform: skewY(-7deg);
   transform-origin: 0;
   position: absolute;
-  background: linear-gradient(150deg, #ffffff 5%, #4c4c4c 20%, #000000 94%);
+  background: linear-gradient(150deg, #ffffff 5%, #4c4c4c 40%, #000000 90%);
+  //background: linear-gradient(150deg, #000000 5%, #4c4c4c 40%, #ffffff 90%);
 
   -webkit-box-shadow: inset 0 -22px 20px -20px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: inset 0 -22px 20px -20px rgba(0, 0, 0, 0.25);
