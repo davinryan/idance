@@ -2,7 +2,7 @@ import * as React from 'react';
 import Header from '../header';
 
 require('./mainPage.scss');
-
+require('../../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.js');
 interface IMainPage {
   location: any;
   router: any;
@@ -26,11 +26,16 @@ class MainPage extends React.Component<IMainPage, any> {
         <div className='mainPage'>
           <Header />
 
+          <div className='sidedevices'>
+            <img className='mask-img main-image'
+                 src='https://static.wixstatic.com/media/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.jpg/v1/fill/w_613,h_266,al_c,q_80,usm_0.66_1.00_0.01/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.webp'/>
+          </div>
+
           <div className='content-block'>
 
             <div className='content'>
 
-              <section className='container-lrg flex'>
+              <section className='container-lrg'>
 
                 <div className='col-4'>
                   <h3 className='subheading'>
@@ -72,7 +77,7 @@ class MainPage extends React.Component<IMainPage, any> {
 
             <span className='code icon'>
                 <div className='bt'>
-                  <a className='bt-button' href='/events'>
+                  <a className='bt-button' href='https://www.idance.co.nz/events'>
                     Events
                   </a>
                 </div>
@@ -113,16 +118,14 @@ class MainPage extends React.Component<IMainPage, any> {
                     <h3 className='subheading'>
                       Start Now
                     </h3>
-                    <p className='paragraph'>
-                      Learn to dance Modern Jive
-                      Have a great night out
-                      Make new friends
-                      It's easy and fun
-                      On your own or with friends
-                      No need to book
-                      Start anytime
-                      Two left feet, no problem
-                    </p>
+                    <p className='paragraph'>Learn to dance Modern Jive</p>
+                    <p className='paragraph'>Have a great night out</p>
+                    <p className='paragraph'>Make new friends</p>
+                    <p className='paragraph'>It's easy and fun</p>
+                    <p className='paragraph'>On your own or with friends</p>
+                    <p className='paragraph'>No need to book</p>
+                    <p className='paragraph'>Start anytime</p>
+                    <p className='paragraph'>Two left feet, no problem</p>
                   </div>
                   <div className='steps'>
                     <div className='emoji'>
@@ -160,50 +163,49 @@ class MainPage extends React.Component<IMainPage, any> {
             </div>
           </div>
           <footer>
-            <div className='container-sml flex text-center'>
+            <div className='container-sml text-center'>
               <div className='col-12'>
                 <h3 className='heading'>
                   Don't waste time, come along to iDance
                 </h3>
                 <div className='bt'>
-                  <a className='bt-button' href='/getting-started'>
+                  <a className='bt-button' href='https://www.idance.co.nz/classes'>
                     Get started!
                   </a>
                 </div>
               </div>
             </div>
-            <div className='container-lrg footer-nav flex'>
-              <div className='col-3 vertical'>
-                <a className='logo' href='/'>
-                  <img src='http://classic.idance.co.nz/images/iDance-logo-1.png' width='100px'/>
-                </a>
+            <div className='container-lrg footer-nav'>
+              <div className='col-3'>
                 <a className='nav-link2'>
                   &copy; 2017 iDance Digital Team
                 </a>
               </div>
-              <div className='col-3 vertical'>
-                <a className='nav-link2' href='/'>
+              <div className='footer-links'>
+              <div className='col-3'>
+                <a className='nav-link2' href='https://www.idance.co.nz/'>
                   Home
                 </a>
-                <a className='nav-link2' href='/features'>
+                <a className='nav-link2' href='https://www.idance.co.nz/about'>
                   About
                 </a>
-                <a className='nav-link2' href='/getting-started'>
+                <a className='nav-link2' href='https://www.idance.co.nz/classes'>
                   Classes
                 </a>
               </div>
-              <div className='col-3 vertical'>
-                <a className='nav-link2' href='/docs'>
+              <div className='col-3'>
+                <a className='nav-link2' href='https://www.idance.co.nz/events'>
                   Events
                 </a>
-                <a className='nav-link2' href='/repo'>
+                <a className='nav-link2' href='https://www.idance.co.nz/wedding-dance-lessons-wellington'>
                   Wedding
                 </a>
-                <a className='nav-link2' href='/repo'>
+                <a className='nav-link2' href='https://www.idance.co.nz/cal'>
                   Crew
                 </a>
               </div>
-              <div className='col-3 vertical'>
+              </div>
+              <div className='col-3'>
                 <div className='nav-link2 credits'>
                   <span className='glyphicon glyphicon-heart' aria-hidden='true'></span>
                   <div>

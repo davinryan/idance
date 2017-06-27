@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -8,9 +10,6 @@ const path = require('path');
 const extend = require('extend');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProduction = nodeEnv === 'production';
-
-const webpack = require('webpack');
-const fs = require('fs');
 
 const nodeModules = {};
 fs.readdirSync('node_modules')

@@ -11,7 +11,6 @@ class Header extends React.Component<{}, any> {
     this.state = {
       navbarCollapsed: true
     };
-
     this.toggleNavBarExpanded = this.toggleNavBarExpanded.bind(this);
   }
 
@@ -27,7 +26,6 @@ class Header extends React.Component<{}, any> {
   }
 
   private toggleNavBarExpanded() {
-    console.log('######## I\'m toggling');
     this.setState({navbarCollapsed: !this.state.navbarCollapsed});
   }
 
@@ -50,14 +48,23 @@ class Header extends React.Component<{}, any> {
 
           {/*<!-- Collect the nav links, forms, and other content for toggling -->*/}
           <div className='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
-            <ul className='nav navbar-collapse'>
-              <li><a href='#' className='nav-link'>Home</a></li>
-              <li><a href='#' className='nav-link'>About</a></li>
-              <li><a href='#' className='nav-link'>Classes</a></li>
-              <li><a href='#' className='nav-link'>Events</a></li>
-              <li><a href='#' className='nav-link'>Weddings</a></li>
-              <li><a href='#' className='nav-link'>Crew</a></li>
-              <li><a href='#' className='nav-link'>More</a></li>
+            <ul className='nav navbar-nav'>
+              <li><a href='https://www.idance.co.nz/' className='nav-link'>Home</a></li>
+              <li><a href='https://www.idance.co.nz/about' className='nav-link'>About</a></li>
+              <li><a href='https://www.idance.co.nz/classes' className='nav-link'>Classes</a></li>
+              <li><a href='https://www.idance.co.nz/events' className='nav-link'>Events</a></li>
+              <li><a href='https://www.idance.co.nz/wedding-dance-lessons-wellington'
+                     className='nav-link'>Weddings</a></li>
+              <li><a href='https://www.idance.co.nz/cal' className='nav-link'>Crew</a></li>
+              <li className='dropdown'>
+                <a href='#' className='dropdown-toggle nav-link' data-toggle='dropdown' role='button'
+                   aria-haspopup='true' aria-expanded='false'>More <span className='caret'></span></a>
+                <ul className='dropdown-menu'>
+                  <li><a href='https://www.idance.co.nz/beginners-moves-rota' className='nav-link'>Beginners Moves
+                    Rota</a></li>
+                  <li><a href='https://www.idance.co.nz/contact' className='nav-link'>Contact</a></li>
+                </ul>
+              </li>
             </ul>
           </div>
         </div>
@@ -68,40 +75,41 @@ class Header extends React.Component<{}, any> {
   private renderDesktopHeader() {
     return (
       <div className='navbar-desktop'>
+        <span className='logo' href='/'></span>
         <div>
           <ul>
             <li>
-              <a className='nav-link' href='/'>
+              <a className='nav-link' href='https://www.idance.co.nz'>
                 Home
               </a>
             </li>
 
             <li>
-              <a className='nav-link' href='/about'>
+              <a className='nav-link' href='https://www.idance.co.nz/about'>
                 About
               </a>
             </li>
 
             <li>
-              <a className='nav-link' href='/classNamees'>
+              <a className='nav-link' href='https://www.idance.co.nz/classes'>
                 Classes
               </a>
             </li>
 
             <li>
-              <a className='nav-link' href='/events'>
+              <a className='nav-link' href='https://www.idance.co.nz/events'>
                 Events
               </a>
             </li>
 
             <li>
-              <a className='nav-link' href='/weddings'>
+              <a className='nav-link' href='https://www.idance.co.nz/wedding-dance-lessons-wellington'>
                 Weddings
               </a>
             </li>
 
             <li>
-              <a className='nav-link' href='/crew'>
+              <a className='nav-link' href='https://www.idance.co.nz/cal'>
                 Crew
               </a>
             </li>
@@ -109,6 +117,17 @@ class Header extends React.Component<{}, any> {
               <a className='nav-bt' href='/more'>
                 More
               </a>
+              <div className='dropdown'>
+                <button className='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>
+                  More&nbsp;
+                  <span className='caret'></span>
+                </button>
+                <ul className='dropdown-menu dropdown-menu-right' aria-labelledby='dropdownMenu1'>
+                  <li><a href='https://www.idance.co.nz/beginners-moves-rota'>Beginners Moves Rota</a></li>
+                  <li><a href='https://www.idance.co.nz/contact'>Contact</a></li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
@@ -118,8 +137,8 @@ class Header extends React.Component<{}, any> {
 
   private renderHeaderContents() {
     return (
-      <div className='container-lrg flex'>
-        <div className='col-6 centervertical'>
+      <div className='container-lrg'>
+        <div className='col-12 centervertical'>
           <h1 className='heading'>
             Modern Jive
           </h1>
@@ -130,14 +149,10 @@ class Header extends React.Component<{}, any> {
             BUT it is not just a dance className, it is a whole night out. Be prepared to enjoy yourselves
           </h2>
           <div className='bt'>
-            <a className='bt-button' href='/getting-started'>
+            <a className='bt-button' href='https://www.idance.co.nz/classes'>
               Get Started
             </a>
           </div>
-        </div>
-        <div className='col-6 sidedevices'>
-          <img className='mask-img main-image'
-               src='https://static.wixstatic.com/media/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.jpg/v1/fill/w_613,h_266,al_c,q_80,usm_0.66_1.00_0.01/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.webp'/>
         </div>
       </div>
     );

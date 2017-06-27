@@ -1,3 +1,5 @@
+$bootstrap-sass-asset-helper: true;
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import "buttons/index";
 @import "device/index";
 @import "grid/index";
@@ -5,7 +7,6 @@
 @import "icons/index";
 @import "footer/index";
 @import "editor/index";
-
 //custom pages
 @import "pages/features";
 @import "pages/home";
@@ -23,6 +24,42 @@ footer,
 *:after {
   margin: 0;
   box-sizing: border-box;
+}
+
+footer {
+
+  .container-sml {
+    display: flex;
+    div {
+      width: 100%;
+    }
+  }
+
+  .container-lrg {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .credits {
+    display: flex;
+  }
+
+  .glyphicon.glyphicon-heart {
+    margin-right: 5px;
+  }
+
+  @media all and (max-width: $screen-sm) {
+    .footer-links {
+      display: none;
+    }
+  }
+
+  @media all and (min-width: $screen-sm) {
+    .footer-links {
+      display: block
+    }
+  }
 }
 
 body, html {
@@ -126,14 +163,54 @@ body.contact-us {
   }
 }
 
+.sidedevices {
+  width: 90%;
+  margin: auto;
+
+  .main-image {
+    width: 100%;
+  }
+}
+
 .content {
   margin-bottom: 30px;
   .container-lrg {
-    width: 90%;
+    width: 100%;
+
+    div.col-4 {
+      margin-left: 40px;
+      margin-right: 40px;
+    }
+  }
+
+  .centerText {
+    p {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  }
+
+  p {
+    font-size: 14pt;
+  }
+
+  @media all and (min-width: $screen-sm) {
+    .steps {
+      margin-left: 40px;
+      margin-right: 40px;
+    }
   }
 
   .sidedevices {
     text-align: center;
+  }
+
+  .col-6 {
+    margin-left: 10px;
+  }
+
+  img {
+    width: 90%;
   }
 }
 
