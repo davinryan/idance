@@ -114,9 +114,6 @@ class Header extends React.Component<{}, any> {
               </a>
             </li>
             <li>
-              <a className='nav-bt' href='/more'>
-                More
-              </a>
               <div className='dropdown'>
                 <button className='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1'
                         data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>
