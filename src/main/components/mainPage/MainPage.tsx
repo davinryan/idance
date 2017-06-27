@@ -26,6 +26,7 @@ class MainPage extends React.Component<IMainPage, any> {
         <div className='mainPage'>
           <Header />
 
+          <br />
           <div className='sidedevices'>
             <img className='mask-img main-image'
                  src='https://static.wixstatic.com/media/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.jpg/v1/fill/w_613,h_266,al_c,q_80,usm_0.66_1.00_0.01/1b63f7_1926711db343492985fdd0e9f128347a~mv2_d_2560_1536_s_2.webp'/>
