@@ -141,9 +141,8 @@ class Header extends React.Component<{}, any> {
           </h1>
           <h2 className='heading'>The biggest partner dance on the planet</h2>
           <h2 className='paragraph'>
-            Why spend your nights on the couch? Come join us and dance the night away! Modern Jive, Fun, Fit &amp;
-            Easy!
-            BUT it is not just a dance className, it is a whole night out. Be prepared to enjoy yourselves
+            Why spend your nights on the couch? Join us and dance the night away! Modern Jive, Fun, Fit &amp; Easy!
+            NOT just a dance class, it is a whole night out. Be prepared to enjoy yourselves!
           </h2>
           <div className='bt'>
             <a className='bt-button' href='https://www.idance.co.nz/classes'>
